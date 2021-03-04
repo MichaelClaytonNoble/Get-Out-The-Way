@@ -3,7 +3,7 @@ import Alien from './alien';
 import Ship from './ship'; 
 
 const DIM_X = 600;
-const DIM_Y = 600;
+const DIM_Y = 450;
 
 class Game {
   constructor(ctx){

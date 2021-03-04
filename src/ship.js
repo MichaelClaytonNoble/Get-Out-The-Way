@@ -4,6 +4,8 @@ import GameView from "./game_view";
 export const RADIUS = 20;
 export const COLOR = "#ffd700";
 
+const DIM_X = 600;
+const DIM_Y = 450;
 class Ship extends MovingObject{
   constructor(options){
     super({color: COLOR, radius: RADIUS, pos: options['pos'], vel: [0,0], type: 'ship'});
@@ -43,14 +45,14 @@ class Ship extends MovingObject{
   outOfBounds(){
     let [x,y] = this.pos; 
 
-    if(x >= 600-this.radius){
-      this.pos[0] = 600-this.radius; 
+    if(x >= DIM_X-this.radius){
+      this.pos[0] = DIM_X-this.radius; 
     }
     if(x<= 0+this.radius){
       this.pos[0] = 0+this.radius;
     }
-    if(y >= 600-this.radius){
-      this.pos[1] = 600-this.radius; 
+    if(y >= DIM_Y-this.radius){
+      this.pos[1] = DIM_Y-this.radius; 
     }
     if(y<= 0+this.radius){
       this.pos[1] = 0+this.radius;

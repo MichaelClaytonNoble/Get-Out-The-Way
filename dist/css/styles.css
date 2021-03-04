@@ -1,0 +1,33 @@
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#title-bar, #stats-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  background-color: #a1a1a1;
+  border: outset grey 2px;
+}
+#title-bar{
+  font-size: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder; 
+  text-align: center;
+}
+
+
+#stats-bar{
+  font-size: 40px;
+}
+
+canvas{
+  border: 3px green solid; 
+  width: 600px; 
+  height: 450px; 
+  background-color: #1d1616f6;
+}
