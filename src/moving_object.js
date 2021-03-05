@@ -40,7 +40,7 @@ class MovingObject{
     let [x,y] = this.pos;
     let [oX, oY] = otherObject.pos;
     
-    if(Math.abs(x - oX)<(this.radius+otherObject.radius) && Math.abs(y-oY)<(this.radius+otherObject.radius)){
+    if(Math.abs(x - oX)<(this.radius+otherObject.radius/1.5) && Math.abs(y-oY)<(this.radius+otherObject.radius/1.5)){
       return true;
     }
     return false;

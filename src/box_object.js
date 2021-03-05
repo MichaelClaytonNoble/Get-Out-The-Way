@@ -1,5 +1,5 @@
 import {regular} from './box_shapes'
-export const SIZE = 20;
+export const SIZE = 40;
 
 class BoxObject{
   constructor(options){

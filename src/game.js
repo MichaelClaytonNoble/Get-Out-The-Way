@@ -4,8 +4,8 @@ import Ship from './ship';
 import BoxObject from './box_object';
 import GameView from './game_view';
 
-const DIM_X = 600;
-const DIM_Y = 450;
+const DIM_X = 900;
+const DIM_Y = 700;
 const NUM_ALIENS = 6;
 const BOX_POINTS = 100; 
 
@@ -21,18 +21,20 @@ class Game {
     this.addShieldBox(); 
     this.addEnergyBox(); 
     this.addAlien();
-
+    
     this.ships = [Game.createShip()];
     this.ship = this.ships[0];
-
+    
     //shields & points
     this.score = 0;
     this.shields = 5;
-
+    this.box_points;
+    this.setPoints(); 
+    
     //bindings
     this.bindMethods = this.bindMethods.bind(this); 
     this.bindMethods(this);
- 
+    
   }
 
   //add objects to the game 
@@ -82,8 +84,9 @@ class Game {
     GameView.updateStats('shields', this.shields); 
   }
   addPoint(){
-    this.score += 1;
-    GameView.updateStats('total', this.shields); 
+    this.score += this.box_points;
+    this.setPoints();
+    GameView.updateStats('total', this.score); 
   }
 
   setPoints(){
@@ -91,12 +94,13 @@ class Game {
   }
   reducePoints(){
     if(this.box_points !== 0){
-      this.box_points -= 1
+      this.box_points -= 1;
+      GameView.updateStats('points', this.box_points);
     }
   }
   printScore(){
     console.log("Score: ", this.score);
-    console.log("Shields: ", this.shields)
+    console.log("Shields: ", this.shields);
   }
 
   //game maintenance 
@@ -139,6 +143,7 @@ class Game {
         this.addPoint();
         this.addEnergyBox();
         this.addAlien();
+        this.setPoints();
         break;
       default: break; 
     }
@@ -180,20 +185,32 @@ class Game {
     return{x, y};
   }
 
+
+
   bindMethods(that){
     that.draw = that.draw.bind(that); 
+
     that.moveShip = that.moveShip.bind(that);
     that.moveObjects = that.moveObjects.bind(that); 
-    that.addAlien = that.addAlien.bind(that); 
-    that.addShieldBox = that.addShieldBox.bind(that); 
+    
     that.checkCollisions = that.checkCollisions.bind(that);
+    
     that.getAllObjects = that.getAllObjects.bind(that);
     that.getAllMoveObjects = that.getAllMoveObjects.bind(that);
-    that.addShield = that.addShield.bind(that); 
+    
     that.printScore = that.printScore.bind(that); 
+    
+    //add elements
+    that.addAlien = that.addAlien.bind(that); 
     that.addShield = that.addShield.bind(that); 
+    that.addShieldBox = that.addShieldBox.bind(that); 
+    //remove elements
     that.removeShield = that.removeShield.bind(that); 
 
+
+    //points
+    that.reducePoints = that.reducePoints.bind(that); 
+    //timers
     setTimeout(that.addShield, 300);
     setTimeout(that.addPoints, 300);
     setTimeout(that.removeShield, 300);

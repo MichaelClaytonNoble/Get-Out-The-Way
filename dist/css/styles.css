@@ -24,10 +24,63 @@ body{
 #stats-bar{
   font-size: 40px;
 }
-
-canvas{
-  border: 3px green solid; 
-  width: 600px; 
-  height: 450px; 
+#layers{
+  height: 800px;
+  width: 1000px; 
   background-color: #1d1616f6;
+  position: relative;
+  border: 1px solid #00eb23; 
+}
+#layer1{
+  height: 780px;
+  width: 980px; 
+  background-color: #1d1616f6;
+  position: relative;
+  border: 1px solid #00eb23; 
+  left: 10px;
+  top: 10px;
+}
+#layer2{
+  height: 760px;
+  width: 960px; 
+  
+  background-color: #1d1616f6;
+  position: relative;
+  top: 10px;
+  border: 1px solid #00eb23; 
+  left: 10px;
+  
+}
+#layer3{
+  height: 740px;
+  width: 940px; 
+  background-color: #1d1616f6;
+  position: relative;
+  border: 1px solid #00eb23; 
+  top: 5px;
+  left: 10px;
+}
+#layer4{
+  height: 720px;
+  width: 920px; 
+  background-color: #1d1616f6;
+  position: relative;
+  border: 1px solid #00eb23; 
+  top: 4px;
+  left: 10px;
+}
+canvas{
+  border: 2px green solid; 
+  max-width: 900px; 
+  max-height: 700px; 
+  background-color: #1d1616f6;
+  margin: 0; 
+  position: relative;
+  left: 10px;
+  top: 3px;
+}
+
+#main{
+  display:flex;
+  flex-direction: row;
 }

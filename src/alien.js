@@ -1,8 +1,8 @@
 import Game from './game';
 import MovingObject from './moving_object'; 
 import Util from './util'; 
-export const RADIUS = 10; 
-export const COLOR = "#676767";
+export const RADIUS = 20; 
+export const COLOR = "#00eb23";
 
 
 class Alien extends MovingObject{

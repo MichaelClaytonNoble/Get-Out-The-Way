@@ -9,6 +9,7 @@ class GameView {
 
     this.bindKeyHandlers = this.bindKeyHandlers.bind(this); 
     this.handleMovements = this.handleMovements.bind(this); 
+    this.handleEvents = this.handleEvents.bind(this); 
   }
 
   static MOVES(){
@@ -32,13 +33,16 @@ class GameView {
   start(){
     this.handleMovements();
     this.bindKeyHandlers();
+    GameView.loadMusic('../dist/css/drexciya.mp3'); 
+    this.handleEvents(); 
     setInterval(this.game.draw, 20);
     setInterval(this.game.moveObjects, 20); 
-    setInterval(this.game.moveShip, 5);
+    setInterval(this.game.moveShip, 7);
     setInterval(this.game.checkCollisions, 20);
     // setInterval(this.game.printScore, 2000);
     setInterval(this.game.addShieldBox, 20000);
     setInterval(this.game.addShieldBox, 60000);
+    setInterval(this.game.reducePoints, 400);
   }
 
   handleMovements(){
@@ -54,7 +58,7 @@ class GameView {
 
   static updateStats( stat, value){ 
     const shieldView = document.getElementById("stats-shields-number");
-    const totalScoreView = document.getElementById("stats-score"); 
+    const totalScoreView = document.getElementById("stats-score-number"); 
     const points = document.getElementById("stats-points");
 
     switch( stat ){
@@ -71,7 +75,32 @@ class GameView {
       default: break; 
     }
   }
+    static loadMusic(src){
+      const music = document.createElement("audio"); 
+      music.src = src; 
+      const body = document.getElementsByTagName("body")[0];
+      music.setAttribute("preload", "auto");
+      music.setAttribute("controls", "none");
+      music.style.display = "none";
+      console.log(body); 
+      body.append(music);
+      const audio = document.getElementsByTagName("audio")[0];
+      audio.play(); 
+  }
 
+  handleEvents(){
+    const toggleAudio = document.getElementById("pause-music");
+    const audio = document.getElementsByTagName("audio")[0];
+    toggleAudio.addEventListener("change", ()=>{
+      if(audio.paused && audio.currentTime > 0 || audio.ended){
+        console.log("play")
+        audio.play(); 
+      }
+      else{
+        audio.pause(); 
+      }
+    })
+  }
 }
 
 export default GameView; 
