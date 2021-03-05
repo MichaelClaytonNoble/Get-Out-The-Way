@@ -1,0 +1,25 @@
+{
+  "name": "GetOutTheWay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run build && gh-pages -d build",
+    "build": "webpack --watch --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makonobo/Get-Out-The-Way.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makonobo/Get-Out-The-Way/issues"
+  },
+  "homepage": "https://github.com/makonobo/Get-Out-The-Way#readme",
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
