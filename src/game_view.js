@@ -89,14 +89,16 @@ class GameView {
   static playMusic(){
     const audio = document.getElementsByTagName("audio")[0];
     audio.play(); 
+    audio.then(play); 
   }
-
+  
   handleEvents(){
     const toggleAudio = document.getElementById("pause-music");
     const audio = document.getElementsByTagName("audio")[0];
     toggleAudio.addEventListener("change", ()=>{
       if(audio.paused || audio.ended){
         audio.play(); 
+        audio.then(play); 
       }
       else{
         audio.pause(); 
