@@ -1,7 +1,7 @@
 import Game from './game';
 import MovingObject from "./moving_object";
 import GameView from "./game_view"; 
-export const RADIUS = 20;
+export const RADIUS = 10;
 export const COLOR = "#ffd700";
 
 const DIM_X = 600;

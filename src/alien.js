@@ -77,6 +77,7 @@ class Alien extends MovingObject{
     let start = [this.pos[0]-this.radius, this.pos[1]];
     let stroke1 = [this.pos[0]+this.radius, this.pos[1]];
     let stroke2 = [this.pos[0], this.pos[1]-this.radius/2];
+    
     let x = [start[0],stroke1[0],stroke2[0]];
     let y=[start[1], stroke1[1], stroke2[1]];
     ctx.strokeStyle = "#0ddddd";

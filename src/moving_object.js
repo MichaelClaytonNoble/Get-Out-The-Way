@@ -10,6 +10,7 @@ class MovingObject{
     this.color = options['color']; 
     this.type=options['type'];
     this.collisionDetected = false;
+    this.posi = this.posi.bind(this);
   }
 
   draw(ctx){
@@ -25,6 +26,10 @@ class MovingObject{
     );
     ctx.fill();
   }
+  posi(){
+    return this.pos;
+  }
+
 
   move(){ 
     this.pos[0] += this.vel[0];

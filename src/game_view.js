@@ -19,10 +19,7 @@ class GameView {
       right: [1, 0]
     }
   }
-  static GAME (){
-
-  }
-  
+ 
   bindKeyHandlers(){
     const ship = this.game.ship;
     Object.keys(GameView.MOVES()).forEach( k=>{
@@ -31,15 +28,19 @@ class GameView {
         window.keyFlags[k]=true;
       })});
   }
-  start(){
 
+  start(){
     this.handleMovements();
     this.bindKeyHandlers();
     setInterval(this.game.draw, 20);
     setInterval(this.game.moveObjects, 20); 
     setInterval(this.game.moveShip, 5);
     setInterval(this.game.checkCollisions, 20);
+    // setInterval(this.game.printScore, 2000);
+    setInterval(this.game.addShieldBox, 20000);
+    setInterval(this.game.addShieldBox, 60000);
   }
+
   handleMovements(){
     window.keyFlags = { left: false, up: false, right: false, down: false}; 
 
@@ -49,6 +50,26 @@ class GameView {
       if(e.keyCode == 39){window.keyFlags.right=false;}
       if(e.keyCode == 40){window.keyFlags.down=false;}
     })
+  }
+
+  static updateStats( stat, value){ 
+    const shieldView = document.getElementById("stats-shields-number");
+    const totalScoreView = document.getElementById("stats-score"); 
+    const points = document.getElementById("stats-points");
+
+    switch( stat ){
+      case 'shields': 
+        shieldView.textContent = value;
+        break;
+      case 'total':
+        totalScoreView.textContent = value;
+        break; 
+      case 'points': 
+        points.textContent = value;
+        break; 
+
+      default: break; 
+    }
   }
 
 }

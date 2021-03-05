@@ -10,12 +10,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const ctx = document.getElementsByTagName("canvas")[0].getContext('2d'); 
   window.canvas = document.getElementsByTagName("canvas")[0]; 
   window.ctx = ctx;
-  window.MovingObject = MovingObject; 
-  window.Alien = Alien; 
 
   window.Game=Game; 
   window.test = test; 
 
+  //create a new game. 
 })
 
 function test(ctx){
