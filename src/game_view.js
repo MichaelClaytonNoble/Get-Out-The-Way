@@ -96,7 +96,6 @@ class GameView {
     const audio = document.getElementsByTagName("audio")[0];
     toggleAudio.addEventListener("change", ()=>{
       if(audio.paused || audio.ended){
-        console.log("play")
         audio.play(); 
       }
       else{

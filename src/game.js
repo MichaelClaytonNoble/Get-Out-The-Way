@@ -84,7 +84,6 @@ class Game {
 
   //manipulate objects
   reduceAlienSize(){
-    console.log(this.aliens[0].radius); 
     this.aliens.forEach( alien => {
       alien.radius = alien.radius/2;
       alien.pauseMove();
