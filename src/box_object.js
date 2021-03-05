@@ -10,7 +10,10 @@ class BoxObject{
     }
     if(this.type ==='energy'){
       this.color = "#FF1111";
-    } 
+    }
+    if(this.type ==='slow'){
+      this.color = "#4d82ff";
+    }
     this.size = SIZE;
     this.radius = SIZE/2;
     this.collisionDetected = false; 

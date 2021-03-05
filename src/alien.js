@@ -10,9 +10,15 @@ class Alien extends MovingObject{
     super({color: COLOR, radius: RADIUS, pos: options['pos'], vel: Util.random45Vec(1), type: 'alien'});
   }
 
+  pauseMove(){
+    this.stop = true;
+    setTimeout(()=>this.stop=false, 2000);
+  }
   move(){
-    super.move();
-    this.reflect();
+    if(!this.stop){
+      super.move();
+      this.reflect();
+    }
   }
   reflect(){
     let x = this.pos[0];

@@ -34,14 +34,16 @@ class GameView {
     this.handleMovements();
     this.bindKeyHandlers();
     GameView.loadMusic('../dist/css/drexciya.mp3'); 
+    GameView.playMusic(); 
     this.handleEvents(); 
     setInterval(this.game.draw, 20);
     setInterval(this.game.moveObjects, 20); 
     setInterval(this.game.moveShip, 7);
     setInterval(this.game.checkCollisions, 20);
     // setInterval(this.game.printScore, 2000);
-    setInterval(this.game.addShieldBox, 20000);
-    setInterval(this.game.addShieldBox, 60000);
+    setInterval(this.game.addShieldBox, 23100);
+    setInterval(this.game.addShieldBox, 61300);
+    setInterval(this.game.addSlowBox, 17000);
     setInterval(this.game.reducePoints, 400);
   }
 
@@ -82,17 +84,18 @@ class GameView {
       music.setAttribute("preload", "auto");
       music.setAttribute("controls", "none");
       music.style.display = "none";
-      console.log(body); 
       body.append(music);
-      const audio = document.getElementsByTagName("audio")[0];
-      audio.play(); 
+  }
+  static playMusic(){
+    const audio = document.getElementsByTagName("audio")[0];
+    audio.play(); 
   }
 
   handleEvents(){
     const toggleAudio = document.getElementById("pause-music");
     const audio = document.getElementsByTagName("audio")[0];
     toggleAudio.addEventListener("change", ()=>{
-      if(audio.paused && audio.currentTime > 0 || audio.ended){
+      if(audio.paused || audio.ended){
         console.log("play")
         audio.play(); 
       }

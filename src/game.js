@@ -18,8 +18,11 @@ class Game {
     this.aliens = []; 
     this.shieldBoxes = [];
     this.energyBoxes = [];
+    this.slowBoxes = []; 
+
     this.addShieldBox(); 
     this.addEnergyBox(); 
+    this.addSlowBox();
     this.addAlien();
     
     this.ships = [Game.createShip()];
@@ -57,6 +60,15 @@ class Game {
       pos: Game.randomPosition()
     });
     this.energyBoxes.push(energyBox);
+  }
+  addSlowBox(){
+    this.slowBoxes.pop();
+    const slowBox = new BoxObject({
+      type: 'slow',
+      pos: Game.randomPosition()
+    });
+    this.slowBoxes.push(slowBox);
+    setTimeout(()=>this.slowBoxes.pop(), 5000);
 
   }
   addShip(){
@@ -64,10 +76,20 @@ class Game {
   }
   
   getAllObjects(){
-    return [].concat(this.aliens, this.shieldBoxes, this.energyBoxes);
+    return [].concat(this.aliens, this.shieldBoxes, this.energyBoxes, this.slowBoxes);
   }
   getAllMoveObjects(){
     return [].concat(this.aliens);
+  }
+
+  //manipulate objects
+  reduceAlienSize(){
+    console.log(this.aliens[0].radius); 
+    this.aliens.forEach( alien => {
+      alien.radius = alien.radius/2;
+      alien.pauseMove();
+      setTimeout(()=>alien.radius=alien.radius*2, 5000);
+    })
   }
   
   //points & lives management 
@@ -120,10 +142,13 @@ class Game {
   //game play 
   remove(objType){
     if(objType === 'alien'){
-      this.aliens = this.aliens.filter( ast=> ast.collisionDetected===false);
+      this.aliens = this.aliens.filter( alien=> alien.collisionDetected===false);
     }
     if( objType ==='shield'){
-      this.shieldBoxes = this.shieldBoxes.filter(shields => shields.collisionDetected===false);
+      this.shieldBoxes = this.shieldBoxes.filter(shield => shield.collisionDetected===false);
+    }
+    if( objType ==='slow'){
+      this.slowBoxes = this.slowBoxes.filter(slow => slow.collisionDetected===false);
     }
   }
   moveObjects(){
@@ -145,6 +170,8 @@ class Game {
         this.addAlien();
         this.setPoints();
         break;
+      case 'slow':
+        this.reduceAlienSize(); 
       default: break; 
     }
   }
@@ -204,6 +231,9 @@ class Game {
     that.addAlien = that.addAlien.bind(that); 
     that.addShield = that.addShield.bind(that); 
     that.addShieldBox = that.addShieldBox.bind(that); 
+    that.addSlowBox = that.addSlowBox.bind(that); 
+    that.addEnergyBox = that.addEnergyBox.bind(that); 
+
     //remove elements
     that.removeShield = that.removeShield.bind(that); 
 
