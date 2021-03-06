@@ -30,7 +30,11 @@ class GameView {
       })});
   }
 
+  loadAllSoundFX(){
+    GameView.loadSoundFX('../dist/css/slow.wav', 'slow')
+  }
   start(){
+    this.loadAllSoundFX(); 
     this.handleMovements();
     this.bindKeyHandlers();
     GameView.loadMusic('../dist/css/drexciya.mp3'); 
@@ -40,7 +44,6 @@ class GameView {
     setInterval(this.game.moveObjects, 20); 
     setInterval(this.game.moveShip, 7);
     setInterval(this.game.checkCollisions, 20);
-    // setInterval(this.game.printScore, 2000);
     setInterval(this.game.addShieldBox, 23100);
     setInterval(this.game.addShieldBox, 61300);
     setInterval(this.game.addSlowBox, 17000);
@@ -80,25 +83,49 @@ class GameView {
     static loadMusic(src){
       const music = document.createElement("audio"); 
       music.src = src; 
+      music.id = 'music'; 
       const body = document.getElementsByTagName("body")[0];
       music.setAttribute("preload", "auto");
       music.setAttribute("controls", "none");
       music.style.display = "none";
       body.append(music);
   }
+
+  static loadSoundFX(src, id){
+    const sFX = document.createElement("audio"); 
+    sFX.id = id; 
+    sFX.src = src; 
+    const body = document.getElementsByTagName("body")[0];
+    sFX.setAttribute("preload", "auto");
+    sFX.setAttribute("controls", "none");
+    sFX.style.display = "none";
+    body.append(sFX);
+  }
+  static playSoundFX(id, duration=2000){
+    const sFX = document.getElementById(id);
+    setTimeout(()=>{
+      sFX.play(); 
+      setTimeout(()=>GameView.stopSoundFX(id, duration), duration);
+    }, 100);
+  }
+  static stopSoundFX(id, duration){
+    const sFX = document.getElementById(id);
+    sFX.pause();
+    sFX.currentTime =0; 
+  }
   static playMusic(){
-    const audio = document.getElementsByTagName("audio")[0];
+    const audio = document.getElementById('music');
     audio.play(); 
-    audio.then(play); 
+    // audio.then(play); 
   }
   
   handleEvents(){
     const toggleAudio = document.getElementById("pause-music");
-    const audio = document.getElementsByTagName("audio")[0];
+    const audio = document.getElementById('music');
     toggleAudio.addEventListener("change", ()=>{
       if(audio.paused || audio.ended){
         audio.play(); 
-        audio.then(play); 
+        // audio.then(play); 
       }
       else{
         audio.pause(); 

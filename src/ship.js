@@ -94,6 +94,22 @@ class Ship extends MovingObject{
     start = [rotated['x'][0], rotated['y'][0]];
     stroke1=[rotated['x'][1], rotated['y'][1]];
     stroke2=[rotated['x'][2], rotated['y'][2]]; 
+    
+    ctx.moveTo(start[0], start[1]);
+    ctx.lineTo(stroke1[0], stroke1[1]);
+    ctx.lineTo(stroke2[0], stroke2[1]);
+    ctx.lineTo(start[0], start[1]);
+    
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle = "#FF00FF"; 
+    start = [this.pos[0]-this.radius/2, this.pos[1]];
+    stroke1 = [this.pos[0]+this.radius/2, this.pos[1]];
+    stroke2 = [this.pos[0], this.pos[1]-this.radius/2];
+    
+    let z = [start[0],stroke1[0],stroke2[0]];
+    let w=[start[1], stroke1[1], stroke2[1]];
+    rotated = Game.rotatePoints(z,w,this.pos[0],this.pos[1], cRadians)
 
     ctx.moveTo(start[0], start[1]);
     ctx.lineTo(stroke1[0], stroke1[1]);

@@ -24,6 +24,11 @@ class Game {
     this.addEnergyBox(); 
     this.addSlowBox();
     this.addAlien();
+    this.addAlien();
+    this.addAlien();
+    this.addAlien();
+    this.addAlien();
+    this.addAlien();
     
     this.ships = [Game.createShip()];
     this.ship = this.ships[0];
@@ -156,6 +161,7 @@ class Game {
 
   action(object){
     this.remove(object.type);
+    // GameView.playSoundFX(object.type);
     switch(object.type){
       case 'alien':
         this.removeShield();
@@ -170,7 +176,8 @@ class Game {
         this.setPoints();
         break;
       case 'slow':
-        this.reduceAlienSize(); 
+        this.reduceAlienSize();
+        GameView.playSoundFX('slow', 2000); 
       default: break; 
     }
   }

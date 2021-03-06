@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.test = test; 
 
   //create a new game. 
+  let play = document.getElementById('play');
+  play.addEventListener("click", ()=> {
+    test(ctx);
+  })
+  
 })
 
 function test(ctx){

@@ -86,7 +86,7 @@ class Alien extends MovingObject{
     
     let x = [start[0],stroke1[0],stroke2[0]];
     let y=[start[1], stroke1[1], stroke2[1]];
-    ctx.strokeStyle = "#0ddddd";
+    ctx.strokeStyle = "#1F51FF";
     let rotated = Game.rotatePoints(x,y,this.pos[0],this.pos[1], cRadians)
     ctx.beginPath();
     start = [rotated['x'][0], rotated['y'][0]];
