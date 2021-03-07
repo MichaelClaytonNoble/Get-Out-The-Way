@@ -5,7 +5,8 @@ import {Howl, Howler} from 'howler';
 
 const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']
 const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3','https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/drexciya.mp3']
-const SOUND_FXS = ['../dist/css/slow.wav']
+const PLAYING =[];
+// const SOUND_FXS = ['../dist/css/slow.wav']
 
 class GameView {
   constructor(){
@@ -36,10 +37,11 @@ class GameView {
   }
 
   loadAllSoundFX(){
-    GameView.loadSoundFX('../dist/css/slow.wav', 'slow')
+    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/slow.wav', 'slow');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/shield.wav', 'shield');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/energy.wav', 'energy');
   }
   start(){
-    console.log("HELLO WORLD");
     this.loadAllSoundFX(); 
     this.handleMovements();
     this.bindKeyHandlers();
@@ -87,14 +89,7 @@ class GameView {
     }
   }
     static loadMusic(src){
-      const music = document.createElement("audio"); 
-      music.src = src; 
-      music.id = 'music'; 
-      const body = document.getElementsByTagName("body")[0];
-      music.setAttribute("preload", "auto");
-      music.setAttribute("controls", "none");
-      music.style.display = "none";
-      body.append(music);
+
   }
 
   static loadSoundFX(src, id){
@@ -119,33 +114,30 @@ class GameView {
     sFX.pause();
     sFX.currentTime =0; 
   }
-  static playMusic(){
+  static playMusic(name,src){
     let music = new Howl({
       src: ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3' ],
       autoplay: true,
       loop: false,
       preload: true,
       volume: .8
-    }) 
-  }
-  // static playMusic(){
-  //   const audio = document.getElementById('music');
-  //   audio.play(); 
-  //   // audio.then(play); 
-  // }
-  
-  handleEvents(){
-    const toggleAudio = document.getElementById("pause-music");
-    const audio = document.getElementById('music');
+    });
+    PLAYING.push({name:{src, id: music.play()}})
+    const toggleAudio = document.getElementById("toggle-music");
     toggleAudio.addEventListener("change", ()=>{
-      if(audio.paused || audio.ended){
-        audio.play(); 
-        // audio.then(play); 
+      if(music.playing()){
+
+        music.pause(); 
       }
       else{
-        audio.pause(); 
+        music.play(); 
       }
     })
+
+  }
+  
+  handleEvents(){
+
   }
 
   static findCtx(){

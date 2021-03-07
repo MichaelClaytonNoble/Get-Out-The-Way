@@ -164,7 +164,8 @@ class Game {
 
   action(object){
     this.remove(object.type);
-    // GameView.playSoundFX(object.type);
+
+    GameView.playSoundFX(object.type);
     switch(object.type){
       case 'alien':
         this.removeShield();
@@ -180,7 +181,6 @@ class Game {
         break;
       case 'slow':
         this.reduceAlienSize();
-        GameView.playSoundFX('slow', 2000); 
       default: break; 
     }
   }

@@ -4,8 +4,10 @@ export function displayGame(){
   const gameDisplay = document.getElementsByTagName('canvas')[0]; 
   if(gameDisplay.classList.contains('hidden')){
     gameDisplay.classList.remove('hidden');
+    console.log("unhide"); 
   }
   else{
+    console.log("hide"); 
     gameDisplay.classList.add('hidden'); 
   }
 }
