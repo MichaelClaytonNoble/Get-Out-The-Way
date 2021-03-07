@@ -107,6 +107,9 @@ class Game {
  
   removeShield(){
     this.shields-=1;
+    if(this.shields === -1){
+      this.gameOver();
+    }
     GameView.updateStats('shields', this.shields); 
   }
   addPoint(){
@@ -218,7 +221,9 @@ class Game {
     return{x, y};
   }
 
-
+  gameOver(){
+    
+  }
 
   bindMethods(that){
     that.draw = that.draw.bind(that); 

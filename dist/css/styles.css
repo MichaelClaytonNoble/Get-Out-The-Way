@@ -1,3 +1,7 @@
+html{
+  user-zoom: none;
+}
+
 @keyframes panning {
   0% {
     background-position: 0% 0%;
@@ -32,16 +36,6 @@
   z-index: -1;
 }
 
-#menu{
-  background-color:rgba(0, 0, 0, 0);
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-  font-size: 15px;
-  color: white; 
-}
 body{
   display: flex;
   flex-direction: column;
@@ -130,7 +124,12 @@ body{
   border: 1px solid #00eb23; 
   top: 4px;
   left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-content: center; 
 }
+
 canvas{
   border: 2px green solid; 
   max-width: 900px; 
@@ -142,7 +141,12 @@ canvas{
   top: 3px;
 }
 
+
 #main{
   display:flex;
   flex-direction: row;
+}
+
+.hidden{
+  display: none;
 }

@@ -8,9 +8,9 @@ const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/makonobo/Get-Out
 const SOUND_FXS = ['../dist/css/slow.wav']
 
 class GameView {
-  constructor(ctx){
-    this.game = new Game(ctx); 
-    this.ctx = ctx; 
+  constructor(){
+    this.game = new Game(GameView.findCtx()); 
+    this.ctx = GameView.findCtx(); 
 
     this.bindKeyHandlers = this.bindKeyHandlers.bind(this); 
     this.handleMovements = this.handleMovements.bind(this); 
@@ -121,13 +121,11 @@ class GameView {
   }
   static playMusic(){
     let music = new Howl({
-      src: [MUSIC_LIST_gh_pages[1]],
+      src: ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3' ],
       autoplay: true,
       loop: false,
       preload: true,
-      volume: .8,
-      onend: ()=>{},
-      rate: 3
+      volume: .8
     }) 
   }
   // static playMusic(){
@@ -148,6 +146,10 @@ class GameView {
         audio.pause(); 
       }
     })
+  }
+
+  static findCtx(){
+    return document.getElementsByTagName("canvas")[0].getContext('2d'); 
   }
 }
 

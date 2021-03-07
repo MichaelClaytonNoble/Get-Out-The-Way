@@ -5,23 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./dist/css/reset.css" />
-  <link rel="stylesheet" type="text/css" href="./dist/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="./dist/css/main.css" />
   <script src="./dist/main.js"></script>
   <script src="./dist/keymaster.js"></script>
   
   <title>Get Out The Way!!</title>
 </head>
-<body>
-  <div id="overlay"></div>
-  <div id="body-wrap">
-    <div id="menu">
-      <!-- <div id="menu-buttons"> -->
+  <body>
+    <div id="overlay"></div>
+    <div id="body-wrap">
 
-        <input type="checkbox" id="pause-music">Pause Music</input>
-        <button id="play">Start Game!</button>
-      <!-- </div> -->
-    </div>
-    <div id="main-wrap">
+      <div id="main-wrap">
       <div id="title-bar">
         <h1 id="title">Get Out The Way: Evade the alien forces!</h1>
       </div>
@@ -35,7 +29,7 @@
             <div id="layer2">
               <div id="layer3">
                 <div id="layer4">
-                  <canvas id="game-canvas" height=700 width=900></canvas>
+                  <canvas id="game-canvas" class="hidden" height=700 width=900></canvas>
                   
                 </div>
               </div>
@@ -43,7 +37,14 @@
           </div>
         </div>
       </div>
+      </div>
+      <div id="side-menu">
+        <!-- <div id="side-menu-items"> -->
+        <ul id="side-menu-list">
+          <li id="side-menu-li"><input type="checkbox" id="toggle-music">Pause Music</input></li>
+        </ul>
+        <!-- </div> -->
+      </div>
     </div>
-  </div>
   </body>
 </html>
