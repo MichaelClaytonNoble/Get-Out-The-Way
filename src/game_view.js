@@ -1,6 +1,10 @@
 import Game from './game'; 
 // import key from '../dist/keymaster'; 
 import Ship from './ship';
+import {Howl, Howler} from 'howler'; 
+
+const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']
+const SOUND_FXS = ['../dist/css/slow.wav']
 
 class GameView {
   constructor(ctx){
@@ -37,7 +41,7 @@ class GameView {
     this.loadAllSoundFX(); 
     this.handleMovements();
     this.bindKeyHandlers();
-    GameView.loadMusic('../dist/css/drexciya.mp3'); 
+    GameView.loadMusic(); 
     GameView.playMusic(); 
     this.handleEvents(); 
     setInterval(this.game.draw, 20);
@@ -114,10 +118,21 @@ class GameView {
     sFX.currentTime =0; 
   }
   static playMusic(){
-    const audio = document.getElementById('music');
-    audio.play(); 
-    // audio.then(play); 
+    let music = new Howl({
+      src: ['../dist/css/music/space_invaders_5.mp3' ],
+      autoplay: true,
+      loop: false,
+      preload: true,
+      volume: .8,
+      onend: ()=>{},
+      rate: 3
+    }) 
   }
+  // static playMusic(){
+  //   const audio = document.getElementById('music');
+  //   audio.play(); 
+  //   // audio.then(play); 
+  // }
   
   handleEvents(){
     const toggleAudio = document.getElementById("pause-music");
