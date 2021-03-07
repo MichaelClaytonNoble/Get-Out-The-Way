@@ -1,0 +1,27 @@
+.welcomeMenu{
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  width: 100%; 
+}
+.welcomeButtonWrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+}
+.welcomeButtons{
+  height:80px; 
+  width: 100px; 
+  font-weight: bold; 
+  margin: 10px;
+}
+.instructions{
+  user-select: none;
+  margin-top: 40px; 
+  margin: 40px 25px 0px 25px;
+  height: 30%;
+  color: white; 
+  font-size: 30px; 
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+}

@@ -7,9 +7,9 @@ const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/
 const SOUND_FXS = ['../dist/css/slow.wav']
 
 class GameView {
-  constructor(ctx){
-    this.game = new Game(ctx); 
-    this.ctx = ctx; 
+  constructor(){
+    this.game = new Game(GameView.findCtx()); 
+    this.ctx = GameView.findCtx(); 
 
     this.bindKeyHandlers = this.bindKeyHandlers.bind(this); 
     this.handleMovements = this.handleMovements.bind(this); 
@@ -144,6 +144,10 @@ class GameView {
         audio.pause(); 
       }
     })
+  }
+
+  static findCtx(){
+    return document.getElementsByTagName("canvas")[0].getContext('2d'); 
   }
 }
 
