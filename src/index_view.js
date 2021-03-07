@@ -15,7 +15,7 @@ export function createWelcome(){
   welcomeMenu.classList.add('welcomeMenu');
 
   const trident1 = document.createElement('img');
-  trident1.src = "'https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/images/trident1.png";
+  trident1.src = "https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/images/trident1.png";
   
   const instructions = document.createElement('div');
   instructions.classList.add('instructions');
