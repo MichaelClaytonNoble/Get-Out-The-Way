@@ -4,6 +4,7 @@ import Ship from './ship';
 import {Howl, Howler} from 'howler'; 
 
 const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']
+const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3','https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/drexciya.mp3']
 const SOUND_FXS = ['../dist/css/slow.wav']
 
 class GameView {
@@ -119,7 +120,7 @@ class GameView {
   }
   static playMusic(){
     let music = new Howl({
-      src: ['../dist/css/music/space_invaders_5.mp3' ],
+      src: [MUSIC_LIST_gh_pages[1]],
       autoplay: true,
       loop: false,
       preload: true,
