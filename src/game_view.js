@@ -119,7 +119,7 @@ class GameView {
   }
   static playMusic(){
     let music = new Howl({
-      src: ['../dist/css/music/space_invaders_5.mp3' ],
+      src: ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3' ],
       autoplay: true,
       loop: false,
       preload: true,
