@@ -123,9 +123,7 @@ class GameView {
       autoplay: true,
       loop: false,
       preload: true,
-      volume: .8,
-      onend: ()=>{},
-      rate: 3
+      volume: .8
     }) 
   }
   // static playMusic(){
