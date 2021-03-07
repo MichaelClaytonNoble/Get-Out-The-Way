@@ -40,6 +40,7 @@ class GameView {
     GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/slow.wav', 'slow');
     GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/shield.wav', 'shield');
     GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/energy.wav', 'energy');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/alien.wav', 'alien');
   }
   start(){
     this.loadAllSoundFX(); 
