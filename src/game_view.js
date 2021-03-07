@@ -39,6 +39,7 @@ class GameView {
     GameView.loadSoundFX('../dist/css/slow.wav', 'slow')
   }
   start(){
+    console.log("HELLO WORLD");
     this.loadAllSoundFX(); 
     this.handleMovements();
     this.bindKeyHandlers();
