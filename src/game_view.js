@@ -6,8 +6,12 @@ import {Howl, Howler} from 'howler';
 const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']
 const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3','https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/drexciya.mp3']
 const PLAYING =[];
-// const SOUND_FXS = ['../dist/css/slow.wav']
-
+const MESSAGES = {
+  energy: "Collect red energy cubes",
+  slow: "Blue cubes slow aliens",
+  alien: "Evade green alien ships",
+  shield: "Yellow cubes adds shields",
+}
 class GameView {
   constructor(){
     this.game = new Game(GameView.findCtx()); 
@@ -133,7 +137,9 @@ class GameView {
     }
   }
 
-
+  flashInstructions(){
+    
+  }
   static loadSoundFX(src, id){
     const sFX = document.createElement("audio"); 
     sFX.id = id; 
