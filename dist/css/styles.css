@@ -83,26 +83,26 @@ body{
 #layers{
   height: 800px;
   width: 1000px; 
-  background-color: #1d1616f6;
+  background-color: #1d1616c9;
   position: relative;
   border: 2px outset #00eb23; 
 }
 #layer1{
   height: 780px;
   width: 980px; 
-  background-color: #1d1616f6;
+  background-color: #1d1616c5;
   position: relative;
   border: 1px solid #00eb23; 
   left: 10px;
-  top: 10px;
+  top: 2px;
 }
 #layer2{
   height: 760px;
   width: 960px; 
   
-  background-color: #1d1616f6;
+  background-color: #1d1616d5;
   position: relative;
-  top: 10px;
+  top: 4px;
   border: 1px solid #00eb23; 
   left: 10px;
   
@@ -110,10 +110,10 @@ body{
 #layer3{
   height: 740px;
   width: 940px; 
-  background-color: #1d1616f6;
+  background-color: #1d1616e6;
   position: relative;
   border: 1px solid #00eb23; 
-  top: 5px;
+  top: 6px;
   left: 10px;
 }
 #layer4{
@@ -122,7 +122,7 @@ body{
   background-color: #1d1616f6;
   position: relative;
   border: 1px solid #00eb23; 
-  top: 4px;
+  top: 8px;
   left: 10px;
   display: flex;
   flex-direction: column;

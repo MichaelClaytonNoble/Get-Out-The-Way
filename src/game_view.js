@@ -57,6 +57,25 @@ class GameView {
     setInterval(this.game.reducePoints, 400);
   }
 
+  static gameAlerts(type){
+    let sideMenuList = document.getElementById("side-menu-list"); 
+
+    switch(type){
+      case 'low shield':
+        let li = document.createElement('li'); 
+        li.innerText = "Low on shields!";
+        li.id ="side-menu-li";
+        sideMenuList.append(li); 
+        sideMenuList.addEventListener()
+        break;
+      case 'game over':
+        break; 
+      default: break;
+
+
+    }
+  }
+
   handleMovements(){
     window.keyFlags = { left: false, up: false, right: false, down: false}; 
 

@@ -169,6 +169,9 @@ class Game {
     switch(object.type){
       case 'alien':
         this.removeShield();
+        if(this.shields <= 1){
+          GameView.gameAlerts('low shield'); 
+        }
         break;
       case 'shield':
         this.addShield();

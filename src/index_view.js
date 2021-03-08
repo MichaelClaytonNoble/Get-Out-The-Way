@@ -78,20 +78,19 @@ export function playMusic(src){
   let volume = .7;
   let path = "https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/"
   if(src === 'drexciya.mp3') {volume =1};
-  src = path+src;
+  let path_src = path+src;
 
   if(currentSong){currentSong.stop();}
     let music = new Howl({
-      src: src,
+      src: path_src,
       autoplay: true,
       loop: false,
       preload: true,
       volume: volume,
-      onend: ()=> {if(!src==='OpeningTheme.mp3'){cb()}}
+      onend: ()=>{if(src!=='OpeningTheme.mp3'){return cb()}}
     });
     currentSong = music; 
     function cb(){
-      currentLi[0].style.color = "white"; 
       currentIndex+=1;
       playMusic(musicList[(currentIndex+1)%musicList.length]);
     }

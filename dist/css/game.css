@@ -14,16 +14,16 @@
 #side-menu-li{
   position: relative;
   top: 20%; 
-  animation: slideup 2s;
   height: 30px;
   width: 100%;
   font-size: 30px;
   margin: 10px;
+  animation: slideup 2s;
 }
 
 @keyframes slideup{
   0%{
-    top: 100%;
+    top: 50%;
   }
   100%{
     top: 20%;
