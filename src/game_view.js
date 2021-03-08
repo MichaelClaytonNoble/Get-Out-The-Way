@@ -56,7 +56,9 @@ class GameView {
     setInterval(this.game.addSlowBox, 17000);
     setInterval(this.game.reducePoints, 400);
   }
-
+  static changeTheme(color){
+    
+  }
   static gameAlerts(type,data){
     let sideMenuList = document.getElementById("side-menu-list"); 
 
