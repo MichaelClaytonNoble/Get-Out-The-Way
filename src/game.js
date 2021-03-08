@@ -8,6 +8,7 @@ const DIM_X = 900;
 const DIM_Y = 700;
 const NUM_ALIENS = 6;
 const BOX_POINTS = 100; 
+const SLOW_DURATION = 5000; 
 
 class Game {
   constructor(ctx){
@@ -92,7 +93,7 @@ class Game {
     this.aliens.forEach( alien => {
       alien.radius = alien.radius/2;
       alien.pauseMove();
-      setTimeout(()=>alien.radius=alien.radius*2, 5000);
+      setTimeout(()=>alien.radius=alien.radius*2, SLOW_DURATION);
     })
   }
   
@@ -187,6 +188,8 @@ class Game {
         break;
       case 'slow':
         this.reduceAlienSize();
+        GameView.changeTheme('var(--slow)');
+        setTimeout(()=>GameView.changeTheme('var(--alien)'), SLOW_DURATION);
       default: break; 
     }
   }

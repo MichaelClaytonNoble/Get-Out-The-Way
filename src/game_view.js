@@ -57,7 +57,8 @@ class GameView {
     setInterval(this.game.reducePoints, 400);
   }
   static changeTheme(color){
-    
+    let root = document.documentElement;
+    root.style.setProperty('--theme', color);
   }
   static gameAlerts(type,data){
     let sideMenuList = document.getElementById("side-menu-list"); 
