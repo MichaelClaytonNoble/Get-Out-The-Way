@@ -29,3 +29,28 @@
     top: 20%;
   }
 }
+
+#side-player{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  margin: 5px;
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+}
+#jukebox{
+  margin: 10px 0px;
+  font-size: 14px; 
+  width: fit-content;
+  background-color: #1d1616f6;
+  color: white; 
+}
+.jukebox-li{
+  padding: 3px; 
+  border: 1px solid white;
+}
+.jukebox-li:hover{
+  border-color: #00eb23;
+}

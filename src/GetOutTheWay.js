@@ -6,7 +6,6 @@ class GetOutTheWay{
 
   constructor(){
     this.setup();
-
     this.welcome(); 
   }
   welcome(){
@@ -18,6 +17,7 @@ class GetOutTheWay{
   handleWelcome(){
     //all event logic set up 
     IndexView.createWelcome(); 
+    IndexView.loadJukebox(); 
     let play = document.getElementById('play');
     play.addEventListener("click", ()=> {
       this.startGame(); 
@@ -43,6 +43,7 @@ class GetOutTheWay{
   startGame(){
     this.setupGame();
     //now actually Gameview start here after set up 
+    document.getElementById("jukebox").firstElementChild.click();
     this.gameView.start();
   }
   gameOver(){

@@ -1,4 +1,7 @@
 
+let currentIndex = 0; 
+let musicList = [];
+let currentSong;
 
 export function displayGame(){
   const gameDisplay = document.getElementsByTagName('canvas')[0]; 
@@ -62,7 +65,47 @@ function displayScoreBoard(){
 
 }
 
+export function playMusic(src){
+  let volume = .7;
+  let path = "https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/"
+  if(src === 'drexciya.mp3') {volume =1};
+  src = path+src;
+
+  if(currentSong){currentSong.stop();}
+    let music = new Howl({
+      src: src,
+      autoplay: true,
+      loop: false,
+      preload: true,
+      volume: volume,
+      onend: ()=> {if(src='OpeningTheme.mp3'){cb()}}
+    });
+    currentSong = music; 
+    console.log(currentSong.volume());
+    function cb(){
+      currentIndex+=1;
+      playMusic(musicList[(currentIndex+1)%musicList.length]);
+    }
+
+  }
 export function loadJukebox(){
      //load music in the jukebox
-     //add music to the ul in the html as a nice link with description 
+     musicList = document.getElementsByClassName("jukebox-li"); 
+     musicList = Object.values(musicList).map( songNode => {
+       return songNode.getAttribute('data-value');
+     })
+     playMusic('OpeningTheme.mp3');
+     const jukebox = document.getElementById('jukebox'); 
+     jukebox.addEventListener('click', e=>{
+       playMusic(e.target.getAttribute('data-value')); 
+     })
+    const toggleAudio = document.getElementById("toggle-music");
+    toggleAudio.addEventListener("change", ()=>{
+      if(currentSong.playing()){
+        currentSong.pause(); 
+      }
+      else{
+        currentSong.play(); 
+      }
+    })
 }

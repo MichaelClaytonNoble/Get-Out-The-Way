@@ -46,8 +46,6 @@ class GameView {
     this.loadAllSoundFX(); 
     this.handleMovements();
     this.bindKeyHandlers();
-    GameView.loadMusic(); 
-    GameView.playMusic(); 
     this.handleEvents(); 
     setInterval(this.game.draw, 20);
     setInterval(this.game.moveObjects, 20); 
@@ -89,9 +87,7 @@ class GameView {
       default: break; 
     }
   }
-    static loadMusic(src){
 
-  }
 
   static loadSoundFX(src, id){
     const sFX = document.createElement("audio"); 
@@ -114,27 +110,6 @@ class GameView {
     const sFX = document.getElementById(id);
     sFX.pause();
     sFX.currentTime =0; 
-  }
-  static playMusic(name,src){
-    let music = new Howl({
-      src: ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3' ],
-      autoplay: true,
-      loop: false,
-      preload: true,
-      volume: .8
-    });
-    PLAYING.push({name:{src, id: music.play()}})
-    const toggleAudio = document.getElementById("toggle-music");
-    toggleAudio.addEventListener("change", ()=>{
-      if(music.playing()){
-
-        music.pause(); 
-      }
-      else{
-        music.play(); 
-      }
-    })
-
   }
   
   handleEvents(){
