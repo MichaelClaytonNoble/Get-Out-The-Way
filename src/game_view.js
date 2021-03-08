@@ -57,22 +57,45 @@ class GameView {
     setInterval(this.game.reducePoints, 400);
   }
 
-  static gameAlerts(type){
+  static gameAlerts(type,data){
     let sideMenuList = document.getElementById("side-menu-list"); 
 
     switch(type){
       case 'low shield':
-        let li = document.createElement('li'); 
-        li.innerText = "Low on shields!";
-        li.id ="side-menu-li";
-        sideMenuList.append(li); 
-        sideMenuList.addEventListener()
+        let shieldli = document.createElement('li'); 
+        shieldli.innerText = "Low on shields!";
+        shieldli.id ="side-menu-li";
+        shieldli.style.color = "yellow";
+        sideMenuList.append(shieldli); 
+        setTimeout(()=>sideMenuList.removeChild(shieldli), 6000);
+        break;
+      case 'add point': 
+        let pointli = document.createElement('li'); 
+        pointli.innerText = "+" + data.points;
+        pointli.id ="side-menu-li";
+        pointli.style.color = "red";
+        sideMenuList.append(pointli); 
+        setTimeout(()=>sideMenuList.removeChild(pointli), 1000);
+        break;
+      case 'add shield': 
+        let addShieldli = document.createElement('li'); 
+        addShieldli.innerText = "+" + 1;
+        addShieldli.id ="side-menu-li";
+        addShieldli.style.color = "yellow";
+        sideMenuList.append(addShieldli); 
+        setTimeout(()=>sideMenuList.removeChild(addShieldli), 1000);
+        break;
+      case 'remove shield': 
+        let removeShieldli = document.createElement('li'); 
+        removeShieldli.innerText = "-" + 1;
+        removeShieldli.id ="side-menu-li";
+        removeShieldli.style.color = "yellow";
+        sideMenuList.append(removeShieldli); 
+        setTimeout(()=>sideMenuList.removeChild(removeShieldli), 1000);
         break;
       case 'game over':
         break; 
       default: break;
-
-
     }
   }
 

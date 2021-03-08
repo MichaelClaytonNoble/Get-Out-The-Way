@@ -10,12 +10,12 @@
 
 #side-menu-list{
   height: 100%;
+  min-width: 250px;
 }
 #side-menu-li{
   position: relative;
   top: 20%; 
   height: 30px;
-  width: 100%;
   font-size: 30px;
   margin: 10px;
   animation: slideup 2s;

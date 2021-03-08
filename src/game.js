@@ -169,14 +169,17 @@ class Game {
     switch(object.type){
       case 'alien':
         this.removeShield();
+        GameView.gameAlerts('remove shield'); 
         if(this.shields <= 1){
           GameView.gameAlerts('low shield'); 
         }
         break;
       case 'shield':
         this.addShield();
+        GameView.gameAlerts('add shield'); 
         break;
       case 'energy':
+        GameView.gameAlerts('add point', {points: this.box_points})
         this.addPoint();
         this.addEnergyBox();
         this.addAlien();
