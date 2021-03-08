@@ -66,6 +66,15 @@ function displayScoreBoard(){
 }
 
 export function playMusic(src){
+  let currentLi = Object.values(document.getElementsByClassName("jukebox-li")).forEach( li=>{
+      if(li.getAttribute('data-value') === src){
+        li.classList.add('jukebox-selected');
+      }
+      else{
+        li.classList.remove('jukebox-selected');
+      }
+  });
+
   let volume = .7;
   let path = "https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/"
   if(src === 'drexciya.mp3') {volume =1};
@@ -78,11 +87,11 @@ export function playMusic(src){
       loop: false,
       preload: true,
       volume: volume,
-      onend: ()=> {if(src='OpeningTheme.mp3'){cb()}}
+      onend: ()=> {if(!src==='OpeningTheme.mp3'){cb()}}
     });
     currentSong = music; 
-    console.log(currentSong.volume());
     function cb(){
+      currentLi[0].style.color = "white"; 
       currentIndex+=1;
       playMusic(musicList[(currentIndex+1)%musicList.length]);
     }

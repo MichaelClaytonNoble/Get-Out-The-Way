@@ -50,7 +50,14 @@
 .jukebox-li{
   padding: 3px; 
   border: 1px solid white;
+  text-align: right;
 }
 .jukebox-li:hover{
   border-color: #00eb23;
+  cursor: pointer; 
+  background-color: #77777741;
+}
+.jukebox-selected{
+  border-color: #00eb23;
+  color: #00eb23;
 }
