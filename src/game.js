@@ -146,6 +146,9 @@ class Game {
   get dim_y(){
     return DIM_Y;
   }
+  isSlowed(){
+    return this.slowed;
+  }
 
   //game play 
   remove(objType){
@@ -188,8 +191,10 @@ class Game {
         break;
       case 'slow':
         this.reduceAlienSize();
+        this.slowed = true;
         GameView.changeTheme('var(--slow)');
-        setTimeout(()=>GameView.changeTheme('var(--alien)'), SLOW_DURATION);
+        GameView.changeTheme('var(--slow', '--title-border');
+        setTimeout(()=>{GameView.changeTheme('var(--alien)'); this.slowed=false;}, SLOW_DURATION);
       default: break; 
     }
   }
@@ -260,6 +265,10 @@ class Game {
 
     //points
     that.reducePoints = that.reducePoints.bind(that); 
+
+    //state
+    that.slowed = false; 
+    that.isSlowed = this.isSlowed.bind(that); 
     //timers
     setTimeout(that.addShield, 300);
     setTimeout(that.addPoints, 300);

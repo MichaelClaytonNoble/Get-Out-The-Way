@@ -2,27 +2,38 @@
   --theme: var(--alien);
   --slow: #4d82ff;
   --alien: #00eb23;
+  --shield: #ffff00;
+  --energy: #FF1111;
+  --title-background: #1d16169b;
+  --title-text: rgb(230, 220, 246);
+  --title-border: rgb(230, 220, 246);
 }
 
 html{
   user-zoom: none;
+  overflow:hidden;
 }
 
 @keyframes panning {
   0% {
-    background-position: 0% 0%;
+    background-position: center;
+    transform: rotate(10deg);
   }
   25% {
-    background-position: 400% 200%;
+    background-position: bottom;
+    transform: rotate(20deg);
   }
-   50% {
-    background-position: -800% 0%;
+  50% {
+    background-position: right;
+    transform: rotate(30deg);
   }
   75% {
-    background-position: 0 500%;
+    background-position: top;
+    transform: rotate(40deg);
   }
   100% {
-    background-position: 0 0;
+    background-position: left;
+    transform: rotate(50deg);
   }
 }
 #stats-shields-number{
@@ -32,14 +43,16 @@ html{
   background-repeat: repeat;
   position: absolute;
   display: block;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-size: 100%;
-  animation: panning 60s infinite;
+  top: -50vh;
+  left: -50vw;
+  height: 300vh;
+  width: 300vw;
+  background-size: fill;
+  background-position: center;
+  animation: panning 60s linear infinite;
   background: rgba(0, 0, 0, 0.281) url('./galaxygrid.jpg');
   z-index: -1;
+  overflow: hidden; 
 }
 
 body{
@@ -55,16 +68,21 @@ body{
   justify-content: space-between;
   height: 70px;
   width: 1000px;
+  color: var(--title-text);
   margin: 0;
-  background-color: #a1a1a1;
-  border: outset grey 2px;
+  align-items: center;
+  background-color: var(--title-background);
+  border: outset var(--title-border) 4px;
+  font-family: 'Courier New', Courier, monospace;
 }
 #title-bar{
   font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: bolder; 
   text-align: center;
-
+}
+#title-message{
+  font-size:37px;
+  font-weight: bold;
 }
 
 #body-wrap{
@@ -91,7 +109,7 @@ body{
   width: 1000px; 
   background-color: #1d1616c9;
   position: relative;
-  border: 2px outset var(--theme); 
+  border: 3px outset var(--theme); 
 }
 #layer1{
   height: 780px;

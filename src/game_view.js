@@ -51,6 +51,7 @@ class GameView {
     this.handleMovements();
     this.bindKeyHandlers();
     this.handleEvents(); 
+    this.flashInstructions(); 
     setInterval(this.game.draw, 20);
     setInterval(this.game.moveObjects, 20); 
     setInterval(this.game.moveShip, 7);
@@ -60,9 +61,9 @@ class GameView {
     setInterval(this.game.addSlowBox, 17000);
     setInterval(this.game.reducePoints, 400);
   }
-  static changeTheme(color){
+  static changeTheme(color, subject='--theme'){
     let root = document.documentElement;
-    root.style.setProperty('--theme', color);
+    root.style.setProperty(subject, color);
   }
   static gameAlerts(type,data){
     let sideMenuList = document.getElementById("side-menu-list"); 
@@ -138,6 +139,25 @@ class GameView {
   }
 
   flashInstructions(){
+    const titleMessage = document.getElementById("title-message")
+    const types = ['energy', 'slow', 'shield', 'alien'];
+    let i = 0;
+
+    const nextMessage = ()=>{
+
+      titleMessage.textContent = MESSAGES[types[i]];
+      titleMessage.style.color = "var(--"+types[i]+")";
+      if(this.game.isSlowed()){
+        GameView.changeTheme('var(--slow)','--title-border' );
+      }
+      else{
+        GameView.changeTheme("var(--"+types[i]+")",'--title-border' );
+      }
+      console.log(MESSAGES[types[i]]);
+      i = (1+i)%types.length; 
+    }
+
+   setInterval(nextMessage, 4000)
     
   }
   static loadSoundFX(src, id){

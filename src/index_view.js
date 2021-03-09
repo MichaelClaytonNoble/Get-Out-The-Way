@@ -3,6 +3,12 @@ let currentIndex = 0;
 let musicList = [];
 let currentSong;
 
+const MESSAGES = {
+  energy: "Collect red energy cubes",
+  slow: "Blue cubes slow aliens",
+  alien: "Evade green alien ships",
+  shield: "Yellow cubes adds shields",
+}
 export function displayGame(){
   const gameDisplay = document.getElementsByTagName('canvas')[0]; 
   if(gameDisplay.classList.contains('hidden')){
@@ -99,21 +105,37 @@ export function playMusic(src){
 export function loadJukebox(){
      //load music in the jukebox
      musicList = document.getElementsByClassName("jukebox-li"); 
-     musicList = Object.values(musicList).map( songNode => {
+     musicList = Object.values(musicList).map( songNode => { 
        return songNode.getAttribute('data-value');
-     })
+     }).filter( song => song !== 'pause'); 
      playMusic('OpeningTheme.mp3');
      const jukebox = document.getElementById('jukebox'); 
      jukebox.addEventListener('click', e=>{
-       playMusic(e.target.getAttribute('data-value')); 
-     })
-    const toggleAudio = document.getElementById("toggle-music");
-    toggleAudio.addEventListener("change", ()=>{
-      if(currentSong.playing()){
-        currentSong.pause(); 
+       if(e.target.getAttribute('data-value') === 'pause'){
+        if(currentSong.playing()){
+          e.target.classList.add('jukebox-selected'); 
+          currentSong.pause(); 
+        }
+        else{
+          e.target.classList.remove('jukebox-selected'); 
+          currentSong.play(); 
+        }
       }
       else{
-        currentSong.play(); 
+        playMusic(e.target.getAttribute('data-value')); 
       }
-    })
+     });
+}
+
+function flashInstructions(){
+  const titleMessage = document.getElementById("title-message")
+  const types = ['energy', 'slow', 'shield', 'alien'];
+  let i = 0;
+
+  setTimeout( ()=> setInterval(nextMessage, 4000), 7000);
+
+  function nextMessage(){
+    titleMessage.textContent = MESSAGES[types[i]];
+    i = (1+i)%types.length; 
+  }
 }
