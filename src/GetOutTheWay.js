@@ -7,6 +7,7 @@ class GetOutTheWay{
   constructor(){
     this.setup();
     this.welcome(); 
+
   }
   welcome(){
     //display greeting splash
@@ -15,6 +16,7 @@ class GetOutTheWay{
     this.handleWelcome();
   }
   handleWelcome(){
+    document.getElementById('title-bar').click();
     //all event logic set up 
     IndexView.createWelcome(); 
     IndexView.loadJukebox(); 
@@ -22,7 +24,6 @@ class GetOutTheWay{
     play.addEventListener("click", ()=> {
       this.startGame(); 
     })
- 
   }
   
   setupGame(){
