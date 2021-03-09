@@ -1,7 +1,7 @@
 import Game from './game';
 import MovingObject from "./moving_object";
 import GameView from "./game_view"; 
-export const RADIUS = 20;
+export const RADIUS = 15;
 export const COLOR = "#ffd700";
 
 const DIM_X = 900;
@@ -10,6 +10,7 @@ class Ship extends MovingObject{
   constructor(options){
     super({color: COLOR, radius: RADIUS, pos: options['pos'], vel: [0,0], type: 'ship'});
 
+    this.ctx = ctx;
     this.outOfBounds = this.outOfBounds.bind(this); 
   }
 
@@ -44,7 +45,7 @@ class Ship extends MovingObject{
   }
 
   draw(){
-        let radians = {
+    let radians = {
       'upright': 0.785398,
       'downleft': 3.75246, 
       'downright':  2.35619,
@@ -81,42 +82,77 @@ class Ship extends MovingObject{
     if(vx<0 && vy>0){
       cRadians = radians['downleft'];
     }
-
-    let start = [this.pos[0]-this.radius, this.pos[1]];
-    let stroke1 = [this.pos[0]+this.radius, this.pos[1]];
-    let stroke2 = [this.pos[0], this.pos[1]-this.radius];
+///start oeue
+    let start = [this.pos[0]-this.radius/5, this.pos[1]-this.radius/7];
+    let strokea=[this.pos[0]-this.radius, this.pos[1]];
+    let strokeb=[this.pos[0]-this.radius/4.8, this.pos[1]+this.radius/5];
+    let strokec=[this.pos[0], this.pos[1]+this.radius*1.5]; 
+    let stroked=[this.pos[0]+this.radius/4.8, this.pos[1]+this.radius/5]; 
+    let strokee=[this.pos[0]+this.radius, this.pos[1]]; 
+    let strokef=[this.pos[0]+this.radius/5, this.pos[1]-this.radius/7]; 
+    let stroke2 = [this.pos[0], this.pos[1]-this.radius/1.2];
     
-    let x = [start[0],stroke1[0],stroke2[0]];
-    let y=[start[1], stroke1[1], stroke2[1]];
-    ctx.strokeStyle = "#FFD700";
+    let x = [start[0], strokea[0], strokeb[0], strokec[0], stroked[0], strokee[0], strokef[0],stroke2[0]];
+    let y = [start[1], strokea[1], strokeb[1], strokec[1], stroked[1], strokee[1], strokef[1],stroke2[1]];
+
+    this.ctx.strokeStyle = "#f400a1";
+    this.ctx.fillStyle = "#f400a1";
+
     let rotated = Game.rotatePoints(x,y,this.pos[0],this.pos[1], cRadians)
-    ctx.beginPath();
+    this.ctx.beginPath();
     start = [rotated['x'][0], rotated['y'][0]];
-    stroke1=[rotated['x'][1], rotated['y'][1]];
-    stroke2=[rotated['x'][2], rotated['y'][2]]; 
+    strokea=[rotated['x'][1], rotated['y'][1]];
+    strokeb=[rotated['x'][2], rotated['y'][2]];
+    strokec=[rotated['x'][3], rotated['y'][3]];
+    stroked=[rotated['x'][4], rotated['y'][4]];
+    strokee=[rotated['x'][5], rotated['y'][5]];
+    strokef=[rotated['x'][6], rotated['y'][6]];
+    stroke2=[rotated['x'][7], rotated['y'][7]]; 
     
-    ctx.moveTo(start[0], start[1]);
-    ctx.lineTo(stroke1[0], stroke1[1]);
-    ctx.lineTo(stroke2[0], stroke2[1]);
-    ctx.lineTo(start[0], start[1]);
+    this.ctx.moveTo(start[0], start[1]);
+    this.ctx.lineTo(strokea[0], strokea[1]);
+    this.ctx.lineTo(strokeb[0], strokeb[1]);
+    this.ctx.lineTo(strokec[0], strokec[1]);
+    this.ctx.lineTo(stroked[0], stroked[1]);
+    this.ctx.lineTo(strokee[0], strokee[1]);
+    this.ctx.lineTo(strokef[0], strokef[1]);
+    this.ctx.lineTo(stroke2[0], stroke2[1]);
+    this.ctx.lineTo(start[0], start[1]);
     
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.strokeStyle = "#FF00FF"; 
-    start = [this.pos[0]-this.radius/2, this.pos[1]];
-    stroke1 = [this.pos[0]+this.radius/2, this.pos[1]];
-    stroke2 = [this.pos[0], this.pos[1]-this.radius/2];
+    this.ctx.fill();
     
-    let z = [start[0],stroke1[0],stroke2[0]];
-    let w=[start[1], stroke1[1], stroke2[1]];
-    rotated = Game.rotatePoints(z,w,this.pos[0],this.pos[1], cRadians)
+    this.ctx.lineWidth=3;
+     start = [this.pos[0]-this.radius/5, this.pos[1]+this.radius/7];
+     strokea=[this.pos[0]-this.radius/1.7, this.pos[1]+this.radius];
+     strokeb=[this.pos[0], this.pos[1]+this.radius/1.5];
+     strokec=[this.pos[0]+this.radius/1.7, this.pos[1]+this.radius]; 
+     stroked=[this.pos[0]+this.radius/5, this.pos[1]+this.radius/7]; 
+     stroke2 = [this.pos[0], this.pos[1]-this.radius/1.2];
+    
+     x = [start[0], strokea[0], strokeb[0], strokec[0], stroked[0], stroke2[0]];
+     y = [start[1], strokea[1], strokeb[1], strokec[1], stroked[1], stroke2[1]];
 
-    ctx.moveTo(start[0], start[1]);
-    ctx.lineTo(stroke1[0], stroke1[1]);
-    ctx.lineTo(stroke2[0], stroke2[1]);
-    ctx.lineTo(start[0], start[1]);
-
-    ctx.stroke()
+    this.ctx.strokeStyle = "#FFD700";
+    
+     rotated = Game.rotatePoints(x,y,this.pos[0],this.pos[1], cRadians)
+    this.ctx.beginPath();
+    start = [rotated['x'][0], rotated['y'][0]];
+    strokea=[rotated['x'][1], rotated['y'][1]];
+    strokeb=[rotated['x'][2], rotated['y'][2]];
+    strokec=[rotated['x'][3], rotated['y'][3]];
+    stroked=[rotated['x'][4], rotated['y'][4]];
+    stroke2=[rotated['x'][5], rotated['y'][5]]; 
+    
+    this.ctx.moveTo(start[0], start[1]);
+    this.ctx.lineTo(strokea[0], strokea[1]);
+    this.ctx.lineTo(strokeb[0], strokeb[1]);
+    this.ctx.lineTo(strokec[0], strokec[1]);
+    this.ctx.lineTo(stroked[0], stroked[1]);
+    this.ctx.lineTo(stroke2[0], stroke2[1]);
+    this.ctx.lineTo(start[0], start[1]);
+    
+    this.ctx.stroke();
+    this.ctx.lineWidth=1;
   }
 
   outOfBounds(){
@@ -138,3 +174,40 @@ class Ship extends MovingObject{
 }
 
 export default Ship; 
+
+
+// let start = [this.pos[0]-this.radius, this.pos[1]];
+//     let stroke1 = [this.pos[0]+this.radius, this.pos[1]];
+    // let stroke2 = [this.pos[0], this.pos[1]-this.radius];
+    
+    // let x = [start[0],stroke1[0],stroke2[0]];
+    // let y=[start[1], stroke1[1], stroke2[1]];
+    // ctx.strokeStyle = "#FFD700";
+    // let rotated = Game.rotatePoints(x,y,this.pos[0],this.pos[1], cRadians)
+    // ctx.beginPath();
+    // start = [rotated['x'][0], rotated['y'][0]];
+    // stroke1=[rotated['x'][1], rotated['y'][1]];
+    // stroke2=[rotated['x'][2], rotated['y'][2]]; 
+    
+    // ctx.moveTo(start[0], start[1]);
+    // ctx.lineTo(stroke1[0], stroke1[1]);
+    // ctx.lineTo(stroke2[0], stroke2[1]);
+    // ctx.lineTo(start[0], start[1]);
+    
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.strokeStyle = "#FF00FF"; 
+    // start = [this.pos[0]-this.radius/2, this.pos[1]];
+    // stroke1 = [this.pos[0]+this.radius/2, this.pos[1]];
+    // stroke2 = [this.pos[0], this.pos[1]-this.radius/2];
+    
+    // let z = [start[0],stroke1[0],stroke2[0]];
+    // let w=[start[1], stroke1[1], stroke2[1]];
+    // rotated = Game.rotatePoints(z,w,this.pos[0],this.pos[1], cRadians)
+
+    // ctx.moveTo(start[0], start[1]);
+    // ctx.lineTo(stroke1[0], stroke1[1]);
+    // ctx.lineTo(stroke2[0], stroke2[1]);
+    // ctx.lineTo(start[0], start[1]);
+
+    // ctx.stroke()
