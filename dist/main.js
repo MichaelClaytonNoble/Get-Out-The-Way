@@ -92,7 +92,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _GetOutTheWay_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GetOutTheWay.js */ \"./src/GetOutTheWay.js\");\n //handles all logic for the entire game\n\n\ndocument.addEventListener(\"DOMContentLoaded\", ()=>{\n  const GOTW = new _GetOutTheWay_js__WEBPACK_IMPORTED_MODULE_0__.default();  \n})\n\n//# sourceURL=webpack://GetOutTheWay/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _GetOutTheWay_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GetOutTheWay.js */ \"./src/GetOutTheWay.js\");\n //handles all logic for the entire game\n\ndocument.addEventListener(\"DOMContentLoaded\", ()=>{\n  const GOTW = new _GetOutTheWay_js__WEBPACK_IMPORTED_MODULE_0__.default();  \n})\n\n//# sourceURL=webpack://GetOutTheWay/./src/index.js?");
 
 /***/ }),
 
