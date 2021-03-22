@@ -70,9 +70,10 @@ function displayScoreBoard(){
 }
 
 export function playMusic(src){
-  let currentLi = Object.values(document.getElementsByClassName("jukebox-li")).forEach( li=>{
+  let currentLi = Object.values(document.getElementsByClassName("jukebox-li")).forEach( (li, i)=>{
       if(li.getAttribute('data-value') === src){
         li.classList.add('jukebox-selected');
+        currentIndex = i;
       }
       else{
         li.classList.remove('jukebox-selected');
@@ -95,7 +96,6 @@ export function playMusic(src){
     });
     currentSong = music; 
     function cb(){
-      currentIndex+=1;
       playMusic(musicList[(currentIndex+1)%musicList.length]);
     }
 

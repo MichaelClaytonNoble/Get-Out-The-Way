@@ -9,7 +9,7 @@ const Util = {
     //   deg = max * Math.random() + min;
     //   console.log("ddeg", dDeg);
     // }
-    console.log('deg', deg); 
+    // console.log('deg', deg); 
 
     return [(Util.scale([Math.sin(deg), Math.cos(deg)], length)) , deg];
   },
