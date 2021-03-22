@@ -2,13 +2,14 @@
 const Util = {
   randomVec(length, cDeg) {
     let deg = 2 * Math.PI * Math.random();
-    if(cDeg){
-      let dDeg = cDeg * 0.01745;
-      let min = (cDeg - 10)*0.01745; 
-      let max = (cDeg + 10) *0.01745;
-      deg = max * Math.random() + min;
-      console.log("ddeg", dDeg);
-    }
+    // if(cDeg){
+    //   let dDeg = cDeg * 0.01745;
+    //   let min = (cDeg - 10)*0.01745; 
+    //   let max = (cDeg + 10) *0.01745;
+    //   deg = max * Math.random() + min;
+    //   console.log("ddeg", dDeg);
+    // }
+    console.log('deg', deg); 
 
     return [(Util.scale([Math.sin(deg), Math.cos(deg)], length)) , deg];
   },
