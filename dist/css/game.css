@@ -39,11 +39,11 @@
   margin: 5px;
   color: white;
   font-weight: bolder;
-  font-size: 25px;
+  font-size: 1.6vw;
 }
 #jukebox{
   margin: 10px 0px;
-  font-size: 18px; 
+  font-size: 1vw; 
   width: fit-content;
   background-color: #1d1616f6;
   color: white; 
