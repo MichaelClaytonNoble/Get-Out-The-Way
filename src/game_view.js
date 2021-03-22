@@ -4,7 +4,7 @@ import Ship from './ship';
 import {Howl, Howler} from 'howler'; 
 
 const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']
-const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3','https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/drexciya.mp3']
+const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3','https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/music/drexciya.mp3']
 const PLAYING =[];
 const MESSAGES = {
   energy: "Collect red energy cubes",
@@ -41,10 +41,10 @@ class GameView {
   }
 
   loadAllSoundFX(){
-    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/slow.wav', 'slow');
-    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/shield.wav', 'shield');
-    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/energy.wav', 'energy');
-    GameView.loadSoundFX('https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/soundFX/alien.wav', 'alien');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/slow.wav', 'slow');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/shield.wav', 'shield');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/energy.wav', 'energy');
+    GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/alien.wav', 'alien');
   }
   start(){
     this.loadAllSoundFX(); 
@@ -153,7 +153,6 @@ class GameView {
       else{
         GameView.changeTheme("var(--"+types[i]+")",'--title-border' );
       }
-      console.log(MESSAGES[types[i]]);
       i = (1+i)%types.length; 
     }
 

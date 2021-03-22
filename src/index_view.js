@@ -13,10 +13,8 @@ export function displayGame(){
   const gameDisplay = document.getElementsByTagName('canvas')[0]; 
   if(gameDisplay.classList.contains('hidden')){
     gameDisplay.classList.remove('hidden');
-    console.log("unhide"); 
   }
   else{
-    console.log("hide"); 
     gameDisplay.classList.add('hidden'); 
   }
 }
@@ -26,7 +24,7 @@ export function createWelcome(){
   welcomeMenu.classList.add('welcomeMenu');
 
   const trident1 = document.createElement('img');
-  trident1.src = "https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/images/trident1.png";
+  trident1.src = "https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/images/trident1.png";
   
   const instructions = document.createElement('div');
   instructions.classList.add('instructions');
@@ -82,7 +80,7 @@ export function playMusic(src){
   });
 
   let volume = .7;
-  let path = "https://raw.githubusercontent.com/makonobo/Get-Out-The-Way/main/dist/css/music/"
+  let path = "https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/music/"
   if(src === 'drexciya.mp3') {volume =1};
   let path_src = path+src;
 

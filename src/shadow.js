@@ -9,15 +9,16 @@ const RADIUS = 100;
 const SIZE = 2*(RADIUS);
 class Shadow extends MovingObject{
   constructor(options){
-    super({color: '#000000', radius: RADIUS, pos: options['pos'], vel: Util.randomVec(1), type: 'shadow'});
-    
+    let trajectory = Util.randomVec(1);
+    super({color: '#000000', radius: RADIUS, pos: options['pos'], vel: trajectory[0], type: 'shadow'});
+    this.changeDirection();
     //degrees
     this.direction = 90; 
     this.angle = 0;
     this.nAngle = this.nAngle.bind(this); 
     this.changeDirection = this.changeDirection.bind(this); 
     this.seekShip = this.seekShip.bind(this); 
-    setInterval(()=>this.changeDirection(Math.floor(Math.random()*2)+1), Math.floor(Math.random()*7000) + 1000); 
+    setInterval(()=>this.changeDirection(Math.floor(Math.random()*2)+1), Math.floor(Math.random()*2000) + 1000); 
   }
 
   move(){
@@ -32,48 +33,61 @@ class Shadow extends MovingObject{
 
     if(x>=dim_x || x<=0){
       this.vel=[this.vel[0]*-1,this.vel[1]];
+      this.rotation = Math.abs(this.rotation-180); 
+      this.angle = Math.abs(this.angle-180); 
+      // if(this.vel[0]< 1){
+      //   this.rotation -= 90;
+      // }
+      // else{
+      //   this.rotation+=90;
+      // }
     }
     if(y>= dim_y || y<=0){
       this.vel=[this.vel[0],this.vel[1]*-1];
+      this.rotation = Math.abs(this.rotation-180); 
+      this.angle = Math.abs(this.angle-180); 
+      // if(this.vel[1]< 1){
+      // }
+      // else{
+      //   this.rotation+=90;
+      //   this.angle +=90;
+      // }
     }
   }
 
-  changeDirection(speed){
-    this.vel= Util.randomVec(speed); 
+  changeDirection(speed=.2){
+    this.trajectory = Util.randomVec(speed, this.rotation);
+    this.vel = this.trajectory[0]; 
+    this.rotation = this.trajectory[1] * 180/Math.PI;
+
     if ( (Math.floor(Math.random()*4) + 1) === 2){
     }
-    // if(x>=dim_x || x<=0){
-    //   this.vel=[this.vel[0]*-1,this.vel[1]];
-    // }
-    // if(y>= dim_y || y<=0){
-    //   this.vel=[this.vel[0],this.vel[1]*-1];
-    // }
-    console.log(this.nAngle());
+    
   }
   findShadowCenter(){
     this.shadowCenter = [this.pos[0], this.pos[1]];
     let xy = Game.rotatePoints([this.pos[0]-SIZE/2+15],[this.pos[1]-SIZE/2+40], this.pos[0],this.pos[1], Game.degToRad(angle));
   }
-  nAngle(){
-    return Math.abs(360-55-this.angle)% 360; 
+  nAngle(angle=this.angle){
+    return Math.abs(360-55-angle)% 360; 
   }
-  calculateAngle(x,y){
-    return Math.atan(y/x) * (180 / Math.PI);
+  nRotation(angle=this.rotation){
+    if(angle-90 < 0){
+      return 360-Math.abs(angle-90)% 360; 
+    }
+    return Math.abs(angle-90)% 360; 
   }
+
 
   draw(){
 
     let [vx, vy] = this.vel; 
-    // console.log('vel', this.vel); 
 
-    // let rotate = (this.calculateAngle(vx, vy))
-    console.log(this.calculateAngle(vx, vy)); 
-    // let rotate = this.calculateAngle(vx, vy); 
     //pointing down is 35 degrees rotation 
     let offset = 305; 
-    // let rotate = 180; 
+    let rotate = this.nRotation(); 
     this.angle = Math.abs(offset-rotate); 
-    // console.log('angle', this.angle);
+
 
     let shadow = new Image();
     shadow.src="../dist/css/images/shadow/energy_halo.png";
