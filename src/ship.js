@@ -5,7 +5,7 @@ export const RADIUS = 15;
 export const COLOR = "#ffd700";
 
 const DIM_X = 900;
-const DIM_Y = 700;
+const DIM_Y = 600;
 class Ship extends MovingObject{
   constructor(options){
     super({color: COLOR, radius: RADIUS, pos: options['pos'], vel: [0,0], type: 'ship'});

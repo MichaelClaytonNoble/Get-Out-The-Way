@@ -1,11 +1,12 @@
 
 import Alien from './alien'; 
 import Ship from './ship'; 
+import Shadow from './shadow'; 
 import BoxObject from './box_object';
 import GameView from './game_view';
 
 const DIM_X = 900;
-const DIM_Y = 700;
+const DIM_Y = 600;
 const NUM_ALIENS = 6;
 const BOX_POINTS = 100; 
 const SLOW_DURATION = 5000; 
@@ -15,8 +16,9 @@ class Game {
     //canvas and setup variables 
     this.ctx=ctx;
     
-    //shieldBoxes, energyBoxes, aliens, ships
+    //shieldBoxes, energyBoxes, aliens, ships, shadows
     this.aliens = []; 
+    this.shadows = []; 
     this.shieldBoxes = [];
     this.energyBoxes = [];
     this.slowBoxes = []; 
@@ -30,10 +32,12 @@ class Game {
     this.addAlien();
     this.addAlien();
     this.addAlien();
+
+    this.addShadow(); 
     
     this.ships = [Game.createShip()];
     this.ship = this.ships[0];
-    
+
     //shields & points
     this.score = 0;
     this.shields = 5;
@@ -48,9 +52,14 @@ class Game {
 
   //add objects to the game 
   addAlien(){
-    const ast= new Alien({pos: Game.randomPosition()});
-    this.aliens.push(ast); 
+    const alien= new Alien({pos: Game.randomPosition()});
+    this.aliens.push(alien); 
   }
+  addShadow(){
+    const shadow = new Shadow({pos: Game.randomPosition()}); 
+    this.shadows.push(shadow); 
+  }
+
   addShieldBox(){
     const shieldBox = new BoxObject({
       type: 'shield',
@@ -82,10 +91,10 @@ class Game {
   }
   
   getAllObjects(){
-    return [].concat(this.aliens, this.shieldBoxes, this.energyBoxes, this.slowBoxes);
+    return [].concat(this.aliens, this.shieldBoxes, this.energyBoxes, this.slowBoxes, this.shadows);
   }
   getAllMoveObjects(){
-    return [].concat(this.aliens);
+    return [].concat(this.aliens, this.shadows);
   }
 
   //manipulate objects
@@ -220,6 +229,7 @@ class Game {
     this.getAllObjects().forEach( obj=>{
       obj.draw(this.ctx);
     })
+
     this.ship.draw(this.ctx);
   }
 
@@ -233,6 +243,10 @@ class Game {
         x[i] = t;
     }
     return{x, y};
+  }
+
+  static degToRad(deg){
+    return deg * 0.01745;  
   }
 
   gameOver(){
