@@ -1,9 +1,9 @@
 
-import Alien from './alien'; 
-import Ship from './ship'; 
-import Shadow from './shadow'; 
-import BoxObject from './box_object';
-import GameView from './game_view';
+import Alien from './alien.js'; 
+import Ship from './ship.js'; 
+import Shadow from './shadow.js'; 
+import BoxObject from './box_object.js';
+import GameView from './game_view.js';
 
 const DIM_X = 900;
 const DIM_Y = 600;

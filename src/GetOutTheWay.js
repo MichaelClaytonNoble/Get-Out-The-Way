@@ -1,5 +1,5 @@
-import * as IndexView from './index_view';
-import GameView from './game_view';
+import * as IndexView from './index_view.js';
+import GameView from './game_view.js';
 
 
 class GetOutTheWay{
@@ -16,7 +16,7 @@ class GetOutTheWay{
     this.handleWelcome();
   }
   handleWelcome(){
-    document.getElementById('title-bar').click();
+    // document.getElementById('title-bar').click();
     //all event logic set up 
     IndexView.createWelcome(); 
     IndexView.loadJukebox(); 

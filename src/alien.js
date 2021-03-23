@@ -1,6 +1,6 @@
-import Game from './game';
-import MovingObject from './moving_object'; 
-import Util from './util'; 
+import Game from './game.js';
+import MovingObject from './moving_object.js'; 
+import Util from './util.js'; 
 export const RADIUS = 20; 
 export const COLOR = "#00eb23";
 

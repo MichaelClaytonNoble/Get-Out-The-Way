@@ -106,7 +106,7 @@ export function loadJukebox(){
      musicList = Object.values(musicList).map( songNode => { 
        return songNode.getAttribute('data-value');
      }).filter( song => song !== 'pause'); 
-     playMusic('OpeningTheme.mp3');
+    //  playMusic('OpeningTheme.mp3');
      const jukebox = document.getElementById('jukebox'); 
      jukebox.addEventListener('click', e=>{
        if(e.target.getAttribute('data-value') === 'pause'){

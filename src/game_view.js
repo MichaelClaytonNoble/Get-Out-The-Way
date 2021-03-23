@@ -1,6 +1,6 @@
-import Game from './game'; 
+import Game from './game.js'; 
 // import key from '../dist/keymaster'; 
-import Ship from './ship';
+import Ship from './ship.js';
 import {Howl, Howler} from 'howler'; 
 
 const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']

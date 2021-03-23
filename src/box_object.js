@@ -1,4 +1,4 @@
-import {regular} from './box_shapes'
+import {regular} from './box_shapes.js'
 export const SIZE = 40;
 
 class BoxObject{
