@@ -15,6 +15,7 @@ class Game {
   constructor(ctx){
     //canvas and setup variables 
     this.ctx=ctx;
+    console.log(ctx)
     
     //shieldBoxes, energyBoxes, aliens, ships, shadows
     this.aliens = []; 

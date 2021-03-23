@@ -16,7 +16,7 @@ class GetOutTheWay{
     this.handleWelcome();
   }
   handleWelcome(){
-    // document.getElementById('title-bar').click();
+    document.getElementById('title-bar').click();
     //all event logic set up 
     IndexView.createWelcome(); 
     IndexView.loadJukebox(); 

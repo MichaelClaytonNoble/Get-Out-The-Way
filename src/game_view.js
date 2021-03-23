@@ -187,7 +187,7 @@ class GameView {
   }
 
   static findCtx(){
-    return document.getElementsByTagName("canvas")[0].getContext('2d'); 
+    return document.getElementById("game-canvas").getContext('2d'); 
   }
 }
 
