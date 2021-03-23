@@ -33,7 +33,7 @@ class Game {
     this.addAlien();
     this.addAlien();
 
-    this.addShadow(); 
+    // this.addShadow(); 
     
     this.ships = [Game.createShip()];
     this.ship = this.ships[0];
@@ -47,7 +47,6 @@ class Game {
     //bindings
     this.bindMethods = this.bindMethods.bind(this); 
     this.bindMethods(this);
-    
   }
 
   //add objects to the game 
