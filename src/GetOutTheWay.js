@@ -1,5 +1,5 @@
-import * as IndexView from './index_view';
-import GameView from './game_view';
+import * as IndexView from './index_view.js';
+import GameView from './game_view.js';
 
 
 class GetOutTheWay{

@@ -1,4 +1,4 @@
-import {SIZE} from './box_object'; 
+import {SIZE} from './box_object.js'; 
 
 export function regular(ctx, pos, color){
   ctx.strokeStyle = color; 

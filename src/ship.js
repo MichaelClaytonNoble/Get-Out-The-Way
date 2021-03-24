@@ -1,6 +1,6 @@
-import Game from './game';
-import MovingObject from "./moving_object";
-import GameView from "./game_view"; 
+import Game from './game.js';
+import MovingObject from "./moving_object.js";
+import GameView from "./game_view.js"; 
 export const RADIUS = 15;
 export const COLOR = "#ffd700";
 

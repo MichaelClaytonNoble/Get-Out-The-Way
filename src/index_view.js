@@ -10,7 +10,7 @@ const MESSAGES = {
   shield: "Yellow cubes adds shields",
 }
 export function displayGame(){
-  const gameDisplay = document.getElementsByTagName('canvas')[0]; 
+  const gameDisplay = document.getElementById('game-canvas'); 
   if(gameDisplay.classList.contains('hidden')){
     gameDisplay.classList.remove('hidden');
   }
@@ -109,7 +109,7 @@ export function loadJukebox(){
      playMusic('OpeningTheme.mp3');
      const jukebox = document.getElementById('jukebox'); 
      jukebox.addEventListener('click', e=>{
-       if(e.target.getAttribute('data-value') === 'pause'){
+       if(e.target.getAttribute('data-value') === 'pause'  && currentSong){
         if(currentSong.playing()){
           e.target.classList.add('jukebox-selected'); 
           currentSong.pause(); 

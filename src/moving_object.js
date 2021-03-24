@@ -1,5 +1,5 @@
 
-import Game from './game'; 
+import Game from './game.js'; 
 
 
 class MovingObject{
