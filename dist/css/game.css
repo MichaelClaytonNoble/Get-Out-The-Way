@@ -42,14 +42,15 @@
   font-weight: bolder;
   font-size: 1.6vw;
 }
-
-#side-play:first-child{
-    	text-shadow:
-		-1px -1px 0 var(--theme),
-		1px -1px 0 var(--theme),
-		-1px 1px 0 var(--theme),
-		1px 1px 0 var(--theme);
+#side-player>p{
+  color: var(--theme);
+  /* text-shadow:
+  -.5px -.5px 0 var(--theme),
+  .5px -.5px 0 var(--theme),
+  -.5px .5px 0 var(--theme),
+  .5px .5px 0 var(--theme); */
 }
+
 #jukebox{
   margin: 10px 0px;
   font-size: 1vw; 
