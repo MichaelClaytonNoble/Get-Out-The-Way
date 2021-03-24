@@ -202,8 +202,15 @@ class Game {
         this.reduceAlienSize();
         this.slowed = true;
         GameView.changeTheme('var(--slow)');
-        GameView.changeTheme('var(--slow', '--title-border');
-        setTimeout(()=>{GameView.changeTheme('var(--alien)'); this.slowed=false;}, SLOW_DURATION);
+        GameView.changeTheme('var(--slow)', '--title-border');
+        GameView.changeTheme('var(--slow)', '--bar-background');
+        GameView.changeTheme('var(--backward)', '--bar-direction');
+        setTimeout(()=>{
+          GameView.changeTheme('var(--bar-initial)', '--bar-background');
+          GameView.changeTheme('var(--alien)'); 
+          GameView.changeTheme('var(--forward)', '--bar-direction'); 
+          this.slowed=false;
+        }, SLOW_DURATION);
       default: break; 
     }
   }

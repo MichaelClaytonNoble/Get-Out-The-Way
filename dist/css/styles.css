@@ -1,10 +1,17 @@
+*{
+  user-select: none;
+}
 :root{
   --theme: var(--alien);
+  --bar-initial: transparent; 
+  --backward: -2000px;
+  --forward: 650px;
+  --bar-direction: var(--forward);
   --slow: #4d82ff;
   --alien: #00eb23;
   --shield: #ffff00;
   --energy: #FF1111;
-  --bar-background: transparent; 
+  --bar-background: var(--bar-initial); 
   --title-text: white;
   --title-border: rgb(230, 220, 246);
   --height: 600px;
@@ -218,7 +225,7 @@ body{
   }
 
   to {
-    background-position: 0px 600px;
+    background-position: 0px var(--bar-direction);
   }
 }
 @keyframes slideTitle{
@@ -227,6 +234,6 @@ body{
   }
 
   to {
-    background-position: 600px 300px;
+    background-position: var(--bar-direction) 300px;
   }
 }

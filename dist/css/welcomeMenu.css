@@ -3,6 +3,8 @@
   flex-direction: column;
   height:100%;
   width: 100%; 
+  user-select: none;
+
 }
 .welcomeButtonWrap{
   display: flex;
@@ -18,11 +20,35 @@
 }
 #instructions-wrap{
   user-select: none;
-  margin-top: 40px; 
-  margin: 30px 25px 0px 25px;
+  margin: 20px 25px 0px 25px;
+  max-height: 30%;
   height: 30%;
   color: white; 
   font-size: 30px; 
   font-family: 'Courier New', Courier, monospace;
   font-weight: bolder;
+}
+
+#instructions::after{
+  content: "";
+  border-right: 4px solid white; 
+  animation: blink-caret .9s infinite;
+}
+
+@keyframes blink-caret {
+  0%{
+    border-color: transparent;
+  }
+  20%{
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  50%{
+    border-color: white;
+  }
+  80%{
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  100%{
+    border-color: transparent;
+  }
 }
