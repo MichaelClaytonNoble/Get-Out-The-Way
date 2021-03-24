@@ -17,6 +17,7 @@ class GetOutTheWay{
   }
   handleWelcome(){
     document.getElementById('title-bar').click();
+    GameView.loadAllSoundFX();
     //all event logic set up 
     IndexView.createWelcome(); 
     IndexView.loadJukebox(); 

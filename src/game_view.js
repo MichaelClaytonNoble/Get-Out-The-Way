@@ -40,7 +40,7 @@ class GameView {
       })});
   }
 
-  loadAllSoundFX(){
+ static loadAllSoundFX(){
     GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/slow.wav', 'slow');
     GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/shield.wav', 'shield');
     GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/energy.wav', 'energy');
@@ -48,7 +48,7 @@ class GameView {
     GameView.loadSoundFX('https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/soundFX/typewriter.wav', 'typewriter');
   }
   start(){
-    this.loadAllSoundFX(); 
+
     this.handleMovements();
     this.bindKeyHandlers();
     this.handleEvents(); 
