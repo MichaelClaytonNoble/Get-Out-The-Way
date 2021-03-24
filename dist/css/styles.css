@@ -4,13 +4,75 @@
   --alien: #00eb23;
   --shield: #ffff00;
   --energy: #FF1111;
-  --title-background: #1d16169b;
-  --title-text: rgb(230, 220, 246);
+  --bar-background: transparent; 
+  --title-text: white;
   --title-border: rgb(230, 220, 246);
   --height: 600px;
   --width: 900px;
 }
-
+.flashBar{
+  animation: slideLeft 15s infinite linear;
+  background-color: blue;
+  background-size: 5px 5px; 
+  background-image: linear-gradient(
+    45deg,
+    yellow 25%,
+    transparent 25%,
+    transparent 75%,
+    yellow 75%,
+    yellow
+  ),
+  linear-gradient(
+    -45deg,
+    yellow 25%,
+    transparent 25%,
+    transparent 75%,
+    yellow 75%,
+    yellow
+  );
+}
+.titleBg{
+  animation: slideTitle 40s infinite linear;
+  background-color: var(--bar-background);
+  background-size: 20px 20px; 
+  background-image: linear-gradient(
+    45deg,
+    darkgrey 25%,
+    transparent 25%,
+    transparent 75%,
+    darkgrey 75%,
+    grey
+  ),
+  linear-gradient(
+    -45deg,
+    grey 25%,
+    transparent 25%,
+    transparent 75%,
+    darkgrey 75%,
+    grey
+  );
+}
+.statsBg{
+  animation: slideStats 20s infinite linear;
+  background-color: var(--bar-background);
+  background-size: 25px 25px; 
+  background-image: linear-gradient(
+    75deg,
+    darkgrey 25%,
+    transparent 25%,
+    transparent 75%,
+    darkgrey 75%,
+    grey
+  ),
+  linear-gradient(
+    -75deg,
+    grey 25%,
+    transparent 25%,
+    transparent 75%,
+    darkgrey 75%,
+    grey
+  );
+}
 html{
   user-zoom: none;
   overflow:hidden;
@@ -31,7 +93,13 @@ body{
   align-items: center;
   padding: 0 3px;
 }
+
 #title-bar, #stats-bar{
+  text-shadow:
+		-.6px -.6px 0 var(--theme),
+		.6px -.6px 0 var(--theme),
+		-.6px .6px 0 var(--theme),
+		.6px .6px 0 var(--theme);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,7 +108,7 @@ body{
   color: var(--title-text);
   margin: 0;
   align-items: center;
-  background-color: var(--title-background);
+  /* background-color: var(--title-background); */
   border: outset var(--title-border) 4px;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -135,8 +203,6 @@ body{
   z-index: 3;
 }
 
-
-
 #main{
   display:flex;
   flex-direction: row;
@@ -144,4 +210,23 @@ body{
 
 .hidden{
   display: none;
+}
+
+@keyframes slideStats{
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0px 600px;
+  }
+}
+@keyframes slideTitle{
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 600px 300px;
+  }
 }

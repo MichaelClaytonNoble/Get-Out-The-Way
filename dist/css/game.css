@@ -32,6 +32,7 @@
 }
 
 #side-player{
+  
   display: flex;
   flex-direction: column;
   justify-content: center; 
@@ -40,6 +41,14 @@
   color: white;
   font-weight: bolder;
   font-size: 1.6vw;
+}
+
+#side-play:first-child{
+    	text-shadow:
+		-1px -1px 0 var(--theme),
+		1px -1px 0 var(--theme),
+		-1px 1px 0 var(--theme),
+		1px 1px 0 var(--theme);
 }
 #jukebox{
   margin: 10px 0px;
