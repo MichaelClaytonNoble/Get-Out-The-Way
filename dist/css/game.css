@@ -1,9 +1,6 @@
 
 #side-menu{
   background-color:rgba(0, 0, 0, 0);
-  /* align-items: center; */
-  /* justify-items: center; */
-  /* justify-content: center; */
   font-size: 15px;
   color: white; 
 }
@@ -43,12 +40,12 @@
   font-size: 1.6vw;
 }
 #side-player>p{
-  color: var(--theme);
-  /* text-shadow:
+  /* color: var(--theme); */
+  text-shadow:
   -.5px -.5px 0 var(--theme),
   .5px -.5px 0 var(--theme),
   -.5px .5px 0 var(--theme),
-  .5px .5px 0 var(--theme); */
+  .5px .5px 0 var(--theme);
 }
 
 #jukebox{

@@ -36,7 +36,7 @@ export function createWelcome(){
   // instructions.innerText = "Use the arrow keys to move the ship around the map, \n\nwhen your ship is highlighted blue you may press the spacebar to deploy defensive maneuvers."
 
   let instructionsText = "Your goal is to collect the red energy cubes while evading enemy hive ships.";
-  instructionsText += "\n\n Yellow cubes provide extra shield strength and blue cubes slow the enemy";
+  instructionsText += "\n\n Yellow cubes provide extra shield strength and blue cubes slow the enemy.";
   instructionsText += "---Use the arrow keys to move the ship around the map, \n\nwhen your ship is blue you may press the spacebar to deploy defensive maneuvers."
   instructionsText += "---Good luck. \n\n --Mike"
   instructions.setAttribute('disabled', true); 
@@ -83,12 +83,12 @@ function handleCreateWelcome(elements){
 function typewriter(id, text){
   let element = document.getElementById(id);
   let texts = text.split('---');
-  console.log(texts);
-  texts[0] = texts[0].split('');
-  texts[1] = texts[1].split('');
-  texts[2] = texts[2].split('');
-  let i =0;
+
+  texts[0] = (texts[0]+'//////////////////////').split('');
+  texts[1] = (texts[1]+'//////////////////////').split('');
+  texts[2] = (texts[2]+'//////////////////////').split('');
   let intervalId = setInterval( ()=> {
+
     write();
     function write(){
       if(texts[0].length){
@@ -97,11 +97,15 @@ function typewriter(id, text){
           if(texts[0][0]==='\n'){texts[0][0]='<br />'}
           write();
         }
+        if( texts[0][0] ==='/'){
+          if(texts[0][0]==='/'){texts[0][0]=''}
+        }
         else{
           typewriterFX();
         }
       }
       else{
+        console.log('shift');
         texts.shift();
         if(texts.length){
           element.innerHTML = '';
