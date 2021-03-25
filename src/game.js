@@ -146,13 +146,16 @@ class Game {
     return new Ship({pos: [300,300]}); 
   }
   static randomPosition(){
-    return [Math.floor(Math.random() * Math.floor(DIM_X)), Math.floor(Math.random() * Math.floor(DIM_Y))];
+    return [Math.floor(Math.random() * Math.floor(Game.prototype.dim_x)), Math.floor(Math.random() * Math.floor(Game.prototype.dim_y))];
   }
   get dim_x(){
-    return DIM_X;
+    // return DIM_X;
+    return window.innerWidth/2;
+
   }
   get dim_y(){
-    return DIM_Y;
+    // return DIM_Y;
+    return window.innerWidth/2 * 0.5625;
   }
   isSlowed(){
     return this.slowed;

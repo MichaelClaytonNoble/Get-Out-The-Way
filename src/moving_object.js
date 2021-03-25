@@ -10,7 +10,6 @@ class MovingObject{
     this.color = options['color']; 
     this.type=options['type'];
     this.collisionDetected = false;
-    this.posi = this.posi.bind(this);
   }
 
   draw(ctx){

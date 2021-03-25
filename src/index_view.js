@@ -209,12 +209,13 @@ function flashInstructions(){
 
 export function createCanvas(){
 
+
   let layer = document.getElementById("layer4");
   let canvas = document.createElement('canvas');
   canvas.classList.add('hidden');
   canvas.id="game-canvas";
   layer.append(canvas);
-  
+  let justCreated = true; 
   (function () {
     let context = canvas.getContext('2d');
     initialize();
@@ -223,11 +224,19 @@ export function createCanvas(){
       resizeCanvas();
     }
     function resizeCanvas() {
+      let height = canvas.height;
+      let width = canvas.width;
+
       canvas.width = window.innerWidth/2;
       canvas.height = canvas.width * 0.5625;
+      if(!justCreated){
+        GameView.findCtx().scale(canvas.width/width, canvas.height/height);
+      }
+      
       let root = document.documentElement;
       root.style.setProperty('--height', canvas.height+'px');
       root.style.setProperty('--width', canvas.width+'px');
+      justCreated = false; 
     }
   })();
 }

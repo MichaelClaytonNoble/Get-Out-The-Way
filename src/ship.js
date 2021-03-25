@@ -4,8 +4,6 @@ import GameView from "./game_view.js";
 export const RADIUS = 15;
 export const COLOR = "#ffd700";
 
-const DIM_X = 900;
-const DIM_Y = 600;
 class Ship extends MovingObject{
   constructor(options){
     super({color: COLOR, radius: RADIUS, pos: options['pos'], vel: [0,0], type: 'ship'});
@@ -41,7 +39,6 @@ class Ship extends MovingObject{
       super.move();
       this.vel = [this.vel[0]/8,this.vel[1]/8];
       this.outOfBounds();
-    
   }
 
   draw(){
@@ -156,16 +153,19 @@ class Ship extends MovingObject{
   }
 
   outOfBounds(){
+    let dim_x = Game.prototype.dim_x;
+    let dim_y = Game.prototype.dim_y; 
+
     let [x,y] = this.pos; 
 
-    if(x >= DIM_X-this.radius){
-      this.pos[0] = DIM_X-this.radius; 
+    if(x >= dim_x-this.radius){
+      this.pos[0] = dim_x-this.radius; 
     }
     if(x<= 0+this.radius){
       this.pos[0] = 0+this.radius;
     }
-    if(y >= DIM_Y-this.radius){
-      this.pos[1] = DIM_Y-this.radius; 
+    if(y >= dim_y-this.radius){
+      this.pos[1] = dim_y-this.radius; 
     }
     if(y<= 0+this.radius){
       this.pos[1] = 0+this.radius;
