@@ -14,8 +14,9 @@
   --bar-background: var(--bar-initial); 
   --title-text: white;
   --title-border: rgb(230, 220, 246);
-  --height: 600px;
-  --width: 900px;
+
+  --height: 550px;
+  --width: 850px;
 }
 .flashBar{
   animation: slideLeft 15s infinite linear;
@@ -111,7 +112,7 @@ body{
   flex-direction: row;
   justify-content: space-between;
   height: 70px;
-  width: 1000px;
+  width: calc(var(--width) + 100px); 
   color: var(--title-text);
   margin: 0;
   align-items: center;
@@ -208,6 +209,8 @@ body{
   left: 10px;
   top: 0px;
   z-index: 3;
+  width: var(--width);
+  height: var(--height); 
 }
 
 #main{

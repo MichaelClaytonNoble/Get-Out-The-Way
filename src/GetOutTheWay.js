@@ -56,6 +56,7 @@ class GetOutTheWay{
   }
 
   setup(){
+    IndexView.createCanvas();
     window.ctx = GameView.findCtx();
     this.scoreBoard = []; //has a name and value property 
   }

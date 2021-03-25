@@ -206,3 +206,28 @@ function flashInstructions(){
     i = (1+i)%types.length; 
   }
 }
+
+export function createCanvas(){
+
+  let layer = document.getElementById("layer4");
+  let canvas = document.createElement('canvas');
+  canvas.classList.add('hidden');
+  canvas.id="game-canvas";
+  layer.append(canvas);
+  
+  (function () {
+    let context = canvas.getContext('2d');
+    initialize();
+    function initialize() {
+      window.addEventListener('resize', resizeCanvas, false);
+      resizeCanvas();
+    }
+    function resizeCanvas() {
+      canvas.width = window.innerWidth/2;
+      canvas.height = canvas.width * 0.5625;
+      let root = document.documentElement;
+      root.style.setProperty('--height', canvas.height+'px');
+      root.style.setProperty('--width', canvas.width+'px');
+    }
+  })();
+}
