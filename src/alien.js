@@ -12,7 +12,7 @@ class Alien extends MovingObject{
 
   pauseMove(){
     this.stop = true;
-    setTimeout(()=>this.stop=false, 2000);
+    setTimeout(()=>this.stop=false, 5000);
   }
   move(){
     if(!this.stop){

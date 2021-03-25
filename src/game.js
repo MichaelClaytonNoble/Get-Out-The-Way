@@ -9,13 +9,12 @@ const DIM_X = 900;
 const DIM_Y = 600;
 const NUM_ALIENS = 6;
 const BOX_POINTS = 100; 
-const SLOW_DURATION = 5000; 
+const SLOW_DURATION = 10000; 
 
 class Game {
   constructor(ctx){
     //canvas and setup variables 
     this.ctx=ctx;
-    console.log(ctx)
     
     //shieldBoxes, energyBoxes, aliens, ships, shadows
     this.aliens = []; 
