@@ -75,6 +75,7 @@ class GameView {
         shieldli.innerText = "Low on shields!";
         shieldli.id ="side-menu-li";
         shieldli.style.color = "yellow";
+        shieldli.style.backgroundColor = "rgba(255, 255, 0, 0.25)";
         sideMenuList.append(shieldli); 
         setTimeout(()=>sideMenuList.removeChild(shieldli), 6000);
         break;
@@ -83,6 +84,7 @@ class GameView {
         pointli.innerText = "+" + data.points;
         pointli.id ="side-menu-li";
         pointli.style.color = "red";
+        pointli.style.backgroundColor = "rgba(255, 0, 0, 0.25)";
         sideMenuList.append(pointli); 
         setTimeout(()=>sideMenuList.removeChild(pointli), 1000);
         break;
@@ -91,6 +93,7 @@ class GameView {
         addShieldli.innerText = "+" + 1;
         addShieldli.id ="side-menu-li";
         addShieldli.style.color = "yellow";
+        addShieldli.style.backgroundColor = "rgba(255, 255, 0, 0.25)";
         sideMenuList.append(addShieldli); 
         setTimeout(()=>sideMenuList.removeChild(addShieldli), 1000);
         break;
@@ -99,6 +102,7 @@ class GameView {
         removeShieldli.innerText = "-" + 1;
         removeShieldli.id ="side-menu-li";
         removeShieldli.style.color = "yellow";
+        removeShieldli.style.backgroundColor = "rgba(255, 255, 0, 0.25)";
         sideMenuList.append(removeShieldli); 
         setTimeout(()=>sideMenuList.removeChild(removeShieldli), 1000);
         break;

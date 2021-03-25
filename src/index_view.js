@@ -105,7 +105,6 @@ function typewriter(id, text){
         }
       }
       else{
-        console.log('shift');
         texts.shift();
         if(texts.length){
           element.innerHTML = '';
