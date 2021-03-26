@@ -236,6 +236,7 @@ class Game {
   //rendering and drawing 
   draw(){
     this.ctx.clearRect(0,0,Game.prototype.dim_x, Game.prototype.dim_y);
+    this.drawBackground(); 
 
     this.getAllObjects().forEach( obj=>{
       obj.draw(this.ctx);
@@ -243,6 +244,83 @@ class Game {
 
     this.ship.draw(this.ctx);
   }
+  drawBackground(){
+    let raised = '#009900';
+    if(this.slowed){
+      raised ='#4d82ff';
+    }
+    let area = 900*600; 
+    let areaRatio = area / Game.prototype.area;
+    let squareSize = 150/areaRatio;
+
+    let numSquaresX = Math.floor(Game.prototype.dim_x/squareSize); 
+    let numSquaresY = Math.floor(Game.prototype.dim_y/squareSize); 
+    let yStart = (Game.prototype.dim_y - numSquaresY*squareSize)/2;
+    let xStart = (Game.prototype.dim_x - numSquaresX*squareSize)/2;
+    let pos = [xStart, yStart]; 
+    let initialPos = pos;
+
+
+    for(let y=0; y<numSquaresY; y++){
+      for(let x=0; x<numSquaresX; x++){
+        this.ctx.globalAlpha = .3;
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = raised;
+        this.ctx.moveTo(pos[0],pos[1]);
+        this.ctx.lineTo(pos[0]+squareSize, pos[1]);
+        this.ctx.stroke();     
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = raised;
+        this.ctx.moveTo(pos[0],pos[1]);
+        this.ctx.lineTo(pos[0], pos[1]+squareSize);
+        this.ctx.stroke();
+        
+        this.ctx.globalAlpha = 1;
+        if(this.slowed){
+          this.drawSquare(pos,raised,squareSize,.05,.2,true);
+        }
+        else{
+          this.drawSquare(pos,'#ff00ff',squareSize,.05,.2,true);
+        }
+        this.drawSquare(pos,'#334433',squareSize,.1,.8,false);
+        this.drawSquare(pos,'#336633',squareSize,.2,.6,false, true);
+        this.drawSquare(pos,'#337733',squareSize,.3,.25,false);
+        this.drawSquare(pos,'#339933',squareSize,.4,.2,false, true);
+        this.drawSquare(pos,'#33BB33',squareSize,.5,.15,false);
+        this.drawSquare(pos,'#33DD33',squareSize,.6,.1,false, true);
+        this.drawSquare(pos,'#33FF33',squareSize,.7,.05,false);
+        this.ctx.globalAlpha=1;
+        pos[0]+=squareSize;
+      }
+      pos[0] = xStart;
+      pos[1]+=squareSize;
+    }
+  }
+  drawSquare(pos, color, size, scale=1, alpha=1, filled=true, line=false){
+    let raised = '009900'; 
+    if(this.slowed){
+      this.ctx.globalAlpha=.1;
+      raised = '#4d82ff';
+    }
+    if(line){
+      this.ctx.beginPath();
+      this.ctx.strokeStyle = raised;
+      this.ctx.moveTo(pos[0],pos[1]);
+      this.ctx.lineTo(pos[0]+(size-size*scale)/2, pos[1]+(size-size*scale)/2);
+      this.ctx.stroke();
+    }
+    this.ctx.globalAlpha = alpha;
+    if(filled){
+      this.ctx.fillStyle = color;
+      this.ctx.fillRect(pos[0]+(size-size*scale)/2,pos[1]+(size-size*scale)/2,size*scale,size*scale);
+    }
+    else{
+      this.ctx.strokeStyle = color;
+      this.ctx.strokeRect(pos[0]+(size-size*scale)/2,pos[1]+(size-size*scale)/2,size*scale,size*scale);
+    }
+    this.ctx.globalAlpha = 1;
+  }
+
 
   static rotatePoints(x,y, cx,cy, radiansAngle){
     let _cos = Math.cos(radiansAngle);
@@ -266,6 +344,8 @@ class Game {
 
   bindMethods(that){
     that.draw = that.draw.bind(that); 
+    that.drawBackground = that.drawBackground.bind(that); 
+    that.drawSquare = that.drawSquare.bind(that); 
 
     that.moveShip = that.moveShip.bind(that);
     that.moveObjects = that.moveObjects.bind(that); 
@@ -292,9 +372,9 @@ class Game {
     //state
     that.slowed = false; 
     that.isSlowed = this.isSlowed.bind(that); 
+
     //timers
     setTimeout(that.addShield, 300);
-    setTimeout(that.addPoints, 300);
     setTimeout(that.removeShield, 300);
   }
 }
