@@ -243,15 +243,13 @@ export function flashInstructions(){
       message.id = "flash-instructions-message"; 
       
       message.textContent = MESSAGES[types[i]];
-      // message.style.color = "var(--"+types[i]+")";
-      // flashInstructions.style.backgroundColor = "var(--"+types[i]+"-transparent)";
       GameView.changeTheme("var(--"+types[i]+")",'--flash-inst-border' );
       GameView.changeTheme("var(--"+types[i]+"-transparent)",'--flash-inst-glow' );
       flashInstructions.append(message);
       i = (1+i)%types.length; 
-      setTimeout(()=>flashInstructions.removeChild(message), 4000);
+      setTimeout(()=>flashInstructions.removeChild(message), 4500);
     }
     nextMessage();
-   setInterval(nextMessage, 4000)
+   setInterval(nextMessage, 4550)
     
   }

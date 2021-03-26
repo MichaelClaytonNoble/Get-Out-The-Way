@@ -208,7 +208,7 @@ class Game {
         GameView.changeTheme('var(--slow)', '--bar-background');
         GameView.changeTheme('var(--backward)', '--bar-direction');
         setTimeout(()=>{
-          GameView.changeTheme('var(--title-border)', '--title-border-initial');
+          GameView.changeTheme('var(--title-border-initial)', '--title-border');
           GameView.changeTheme('var(--bar-initial)', '--bar-background');
           GameView.changeTheme('var(--alien)'); 
           GameView.changeTheme('var(--forward)', '--bar-direction'); 

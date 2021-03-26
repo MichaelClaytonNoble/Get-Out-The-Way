@@ -52,19 +52,19 @@
   background-size: 20px 20px; 
   background-image: linear-gradient(
     45deg,
-    darkgrey 25%,
+    rgb(109, 109, 109) 25%,
     transparent 25%,
     transparent 75%,
-    darkgrey 75%,
-    grey
+    rgb(109, 109, 109) 75%,
+    darkgrey
   ),
   linear-gradient(
     -45deg,
-    grey 25%,
+    darkgrey 25%,
     transparent 25%,
     transparent 75%,
-    darkgrey 75%,
-    grey
+    rgb(109, 109, 109) 75%,
+    darkgrey
   );
 }
 .statsBg{
@@ -73,19 +73,19 @@
   background-size: 25px 25px; 
   background-image: linear-gradient(
     75deg,
-    darkgrey 25%,
+    rgb(109, 109, 109) 25%,
     transparent 25%,
     transparent 75%,
-    darkgrey 75%,
-    grey
+    rgb(109, 109, 109) 75%,
+    darkgrey
   ),
   linear-gradient(
     -75deg,
-    grey 25%,
+    darkgrey 25%,
     transparent 25%,
     transparent 75%,
-    darkgrey 75%,
-    grey
+    rgb(109, 109, 109) 75%,
+    darkgrey
   );
 }
 html{
@@ -133,28 +133,45 @@ body{
   font-family: 'Courier New', Courier, monospace;
 }
 #title-bar{
-  font-size: 2.4vw;
+  font-size: calc(2vw + 1vh);
   font-weight: bolder; 
   text-align: center;
 }
-#title-message{
+#title{
+  text-align: center;
+  width: 100%; 
+  letter-spacing: 5px;
+  text-shadow: .3px .3px 0 rgb(0, 256, 161),.5px .5px 0 rgb(256, 0, 161),   1px 1px 0 rgb(255, 0, 166),   2px 2px 0 rgb(236, 0, 150),   3px 3px 0 rgb(227, 0, 141), 4px 4px 0 rgb(218, 0, 132), 5px 5px 0 rgb(208, 0, 122),      6px 6px 0 rgb(200, 0, 110), 7px 7px 0 rgb(190, 0, 100), 8px 8px 0 rgb(180, 0, 90), 9px 9px 0 rgb(170, 0, 80), 10px 10px 0 rgb(160, 0, 70), 11px 11px 0 rgb(150, 0, 60), 12px 12px 0 rgb(140, 0, 50), 13px 13px rgb(120, 0, 40), 14px 14px 0 rgb(100, 0, 30), 15px 15px 0 rgb(80, 0, 20), 16px 16px 1px rgba(0,0,0,0.5), 0px 0px 16px rgba(0,0,0,.2), 2px 2px 2px rgb(204, 0, 160);
+}
+/* #title-message{
   font-size:1.8vw;
   font-weight: bold;
-}
+} */
 
 #stats-bar{
-  font-size: 2vw;
+  font-size: calc(1.2vw + 1vh);
   font-weight: bold;
+  text-shadow: 3px 3px 3px rgb(0, 151, 0);
+  text-shadow: 1px 1px 1px rgb(220, 60, 90);
 }
-#stats-shields-number{
-  color: rgb(139, 34, 60);
+#stats-shields{
+  margin-right: 6vw;
+
 }
-#stats-points{
-  color: rgb(209, 136, 0);
-  font-weight: bolder; 
+#stats-shields-number, #stats-points{
+  color: rgb(240, 240, 0);
+  text-shadow: 2px 2px 2px rgb(256,0,256);
+  font-size: calc(1.2vw + 2vh);
 }
+#stats-score{
+  margin-left: 6vw;
+}
+
 #stats-score-number{
-  color: rgb(172, 0, 0);
+  font-size: calc(1.2vw + 2vh);
+  margin-left: -10px;
+  color: rgb(256, 0, 0);
+  text-shadow: 2px 2px 2px rgb(100,0,256);
 }
 #layers{
   height: calc(var(--height) + 100px);
