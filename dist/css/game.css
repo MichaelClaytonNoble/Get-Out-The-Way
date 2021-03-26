@@ -1,8 +1,53 @@
+:root{
+   --flash-inst-border: rgb(230, 220, 246);
+   --flash-inst-glow: var(--flash-inst-border);
+}
+
+/* right side menu stuff */
 
 #side-menu{
   background-color:rgba(0, 0, 0, 0);
   font-size: 15px;
   color: white; 
+}
+#side-menu-flash-instructions{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  height: 70px;
+  width: 100%;
+
+  background-color: transparent;
+}
+
+#flash-instructions-message{
+
+  width: max-content;
+  position: absolute; 
+  margin-left: 2%;
+  letter-spacing: 2px;
+  font-size: 1.3vw;
+  font-family: 'Courier New', Courier, monospace;
+  /* text-align: center;  */
+  color: #ffffff;
+  animation: pulse infinite linear 1.5s;
+}
+
+@keyframes pulse{
+  0%{
+    font-weight: bold;
+    transition: font-weight .75s;
+  }
+  50%{
+    text-shadow: 3px 0px 2px #FFF, 0 0 1px #FFF, 0 0 1px #FFF, 0 0 25px var(--flash-inst-glow), 0 0 30px var(--flash-inst-glow), 0 0 45px var(--flash-inst-glow), 0 0 50px var(--flash-inst-glow), 0 0 60px var(--flash-inst-glow);
+    /* transition: text-shadow .5s; */
+    transition: font-weight .75s;
+    font-weight: normal;
+  }
+  100%{
+    transition: font-weight .75s;
+    font-weight: bold;
+  }
 }
 #side-menu-list{
   height: 100%;

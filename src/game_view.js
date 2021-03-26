@@ -6,12 +6,7 @@ import {Howl, Howler} from 'howler';
 const MUSIC_LIST = ['../dist/css/music/space_invaders_5.mp3','../dist/css/music/drexciya.mp3']
 const MUSIC_LIST_gh_pages = ['https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/music/space_invaders_5.mp3','https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/music/drexciya.mp3']
 const PLAYING =[];
-const MESSAGES = {
-  energy: "Collect red energy cubes",
-  slow: "Blue cubes slow aliens",
-  alien: "Evade green alien ships",
-  shield: "Yellow cubes adds shields",
-}
+
 class GameView {
   constructor(){
     this.game = new Game(GameView.findCtx()); 
@@ -52,7 +47,6 @@ class GameView {
     this.handleMovements();
     this.bindKeyHandlers();
     this.handleEvents(); 
-    this.flashInstructions(); 
     setInterval(this.game.draw, 20);
     setInterval(this.game.moveObjects, 20); 
     setInterval(this.game.moveShip, 7);
@@ -143,27 +137,6 @@ class GameView {
     }
   }
 
-  flashInstructions(){
-    const titleMessage = document.getElementById("title-message")
-    const types = ['energy', 'slow', 'shield', 'alien'];
-    let i = 0;
-
-    const nextMessage = ()=>{
-
-      titleMessage.textContent = MESSAGES[types[i]];
-      titleMessage.style.color = "var(--"+types[i]+")";
-      if(this.game.isSlowed()){
-        GameView.changeTheme('var(--slow)','--title-border' );
-      }
-      else{
-        GameView.changeTheme("var(--"+types[i]+")",'--title-border' );
-      }
-      i = (1+i)%types.length; 
-    }
-
-   setInterval(nextMessage, 4000)
-    
-  }
   static loadSoundFX(src, id){
     const sFX = document.createElement("audio"); 
     sFX.id = id; 

@@ -1,6 +1,6 @@
 import {regular} from './box_shapes.js'
 import Game from './game.js'; 
-export const SIZE = 40;
+export const SIZE = 60;
 
 class BoxObject{
   constructor(options){
@@ -15,7 +15,7 @@ class BoxObject{
     if(this.type ==='slow'){
       this.color = "#4d82ff";
     }
-    let area = 900*700; 
+    let area = 900*600; 
     this.size = SIZE;
     let areaRatio = area / Game.prototype.area;
     this.size/=areaRatio;

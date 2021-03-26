@@ -82,7 +82,7 @@ class Game {
       pos: Game.randomPosition()
     });
     this.slowBoxes.push(slowBox);
-    setTimeout(()=>this.slowBoxes.pop(), 5000);
+    setTimeout(()=>this.slowBoxes.pop(), 9000);
 
   }
   addShip(){
@@ -135,10 +135,6 @@ class Game {
       this.box_points -= 1;
       GameView.updateStats('points', this.box_points);
     }
-  }
-  printScore(){
-    console.log("Score: ", this.score);
-    console.log("Shields: ", this.shields);
   }
 
   //game maintenance 
@@ -212,6 +208,7 @@ class Game {
         GameView.changeTheme('var(--slow)', '--bar-background');
         GameView.changeTheme('var(--backward)', '--bar-direction');
         setTimeout(()=>{
+          GameView.changeTheme('var(--title-border)', '--title-border-initial');
           GameView.changeTheme('var(--bar-initial)', '--bar-background');
           GameView.changeTheme('var(--alien)'); 
           GameView.changeTheme('var(--forward)', '--bar-direction'); 
@@ -277,8 +274,6 @@ class Game {
     
     that.getAllObjects = that.getAllObjects.bind(that);
     that.getAllMoveObjects = that.getAllMoveObjects.bind(that);
-    
-    that.printScore = that.printScore.bind(that); 
     
     //add elements
     that.addAlien = that.addAlien.bind(that); 

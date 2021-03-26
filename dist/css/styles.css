@@ -11,9 +11,16 @@
   --alien: #00eb23;
   --shield: #ffff00;
   --energy: #FF1111;
+
+  --slow-transparent: #004cffda;
+  --alien-transparent: #00ff26da;
+  --shield-transparent: #ffff00da;
+  --energy-transparent: #ff0000;
+
   --bar-background: var(--bar-initial); 
   --title-text: white;
-  --title-border: rgb(230, 220, 246);
+  --title-border-initial: rgb(230, 220, 246);
+  --title-border: var(--title-border-initial);
 
   --height: 650px;
   --width: 900px;

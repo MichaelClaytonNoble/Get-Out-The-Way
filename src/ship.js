@@ -7,8 +7,9 @@ export const COLOR = "#ffd700";
 class Ship extends MovingObject{
   constructor(options){
 
-    let area = 900*700; 
+    let area = 900*600; 
     let areaRatio = area / Game.prototype.area;
+    console.log(RADIUS/areaRatio); 
     super({color: COLOR, radius: RADIUS/areaRatio, pos: options['pos'], vel: [0,0], type: 'ship'});
 
     this.ctx = ctx;

@@ -196,18 +196,6 @@ export function loadJukebox(){
      });
 }
 
-function flashInstructions(){
-  const titleMessage = document.getElementById("title-message")
-  const types = ['energy', 'slow', 'shield', 'alien'];
-  let i = 0;
-
-  // setTimeout( ()=> setInterval(nextMessage, 4000), 7000);
-
-  function nextMessage(){
-    titleMessage.textContent = MESSAGES[types[i]];
-    i = (1+i)%types.length; 
-  }
-}
 
 export function createCanvas(){
 
@@ -243,3 +231,26 @@ export function createCanvas(){
     }
   })();
 }
+
+export function flashInstructions(){
+    const flashInstructions = document.getElementById("side-menu-flash-instructions")
+    const types = ['energy', 'slow', 'shield', 'alien'];
+    let i = 0;
+    
+    const nextMessage = ()=>{
+      const message = document.createElement('li'); 
+      message.id = "flash-instructions-message"; 
+      
+      message.textContent = MESSAGES[types[i]];
+      // message.style.color = "var(--"+types[i]+")";
+      // flashInstructions.style.backgroundColor = "var(--"+types[i]+"-transparent)";
+      GameView.changeTheme("var(--"+types[i]+")",'--flash-inst-border' );
+      GameView.changeTheme("var(--"+types[i]+"-transparent)",'--flash-inst-glow' );
+      flashInstructions.append(message);
+      i = (1+i)%types.length; 
+      setTimeout(()=>flashInstructions.removeChild(message), 4000);
+    }
+
+   setInterval(nextMessage, 4000)
+    
+  }

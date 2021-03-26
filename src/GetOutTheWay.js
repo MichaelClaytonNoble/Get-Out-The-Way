@@ -47,6 +47,7 @@ class GetOutTheWay{
     //now actually Gameview start here after set up 
     document.getElementById("jukebox").firstElementChild.click();
     this.gameView.start();
+    IndexView.flashInstructions();
   }
   gameOver(){
 

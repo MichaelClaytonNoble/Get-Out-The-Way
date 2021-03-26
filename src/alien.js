@@ -1,13 +1,13 @@
 import Game from './game.js';
 import MovingObject from './moving_object.js'; 
 import Util from './util.js'; 
-export const RADIUS = 15; 
+export const RADIUS = 20; 
 export const COLOR = "#00eb23";
 
 
 class Alien extends MovingObject{
   constructor(options){
-    let area = 900*700; 
+    let area = 900*600; 
     let areaRatio = area / Game.prototype.area;
     super({color: COLOR, radius: RADIUS/areaRatio, pos: options['pos'], vel: Util.random45Vec(1), type: 'alien'});
   }
