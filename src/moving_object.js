@@ -10,6 +10,10 @@ class MovingObject{
     this.color = options['color']; 
     this.type=options['type'];
     this.collisionDetected = false;
+    this.reposition = this.reposition.bind(this); 
+    this.height = Game.prototype.dim_y;
+    this.width = Game.prototype.dim_x; 
+    window.addEventListener('resize', ()=>this.reposition(this.width, this.height), false);
   }
 
   draw(ctx){
@@ -24,9 +28,6 @@ class MovingObject{
       true
     );
     ctx.fill();
-  }
-  posi(){
-    return this.pos;
   }
 
 
@@ -45,7 +46,15 @@ class MovingObject{
     return false;
   }
 
+  reposition(width, height){
+    let widthRatio = width / this.pos[0]; 
+    let heightRatio =  height / this.pos[1]; 
 
+    this.pos[0] = Game.prototype.dim_x / widthRatio;
+    this.pos[1] = Game.prototype.dim_y/heightRatio;
+    this.height = Game.prototype.dim_y;
+    this.width = Game.prototype.dim_x; 
+  }
 
 }
 

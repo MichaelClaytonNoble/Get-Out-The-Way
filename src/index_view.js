@@ -175,7 +175,7 @@ export function loadJukebox(){
      musicList = Object.values(musicList).map( songNode => { 
        return songNode.getAttribute('data-value');
      }).filter( song => song !== 'pause'); 
-     playMusic('OpeningTheme.mp3');
+    //  playMusic('OpeningTheme.mp3');
      const jukebox = document.getElementById('jukebox'); 
      jukebox.addEventListener('click', e=>{
        if(e.target.getAttribute('data-value') === 'pause'  && currentSong){
@@ -209,7 +209,6 @@ function flashInstructions(){
 
 export function createCanvas(){
 
-
   let layer = document.getElementById("layer4");
   let canvas = document.createElement('canvas');
   canvas.classList.add('hidden');
@@ -236,6 +235,8 @@ export function createCanvas(){
       let root = document.documentElement;
       root.style.setProperty('--height', canvas.height+'px');
       root.style.setProperty('--width', canvas.width+'px');
+      GameView.findCtx().setTransform(1,0,0,1,0,0);
+      GameView.findCtx().imageSmoothingEnabled = false;
       justCreated = false; 
     }
   })();

@@ -157,6 +157,10 @@ class Game {
     // return DIM_Y;
     return window.innerWidth/2 * 0.5625;
   }
+
+  get area(){
+    return Game.prototype.dim_x * Game.prototype.dim_y; 
+  }
   isSlowed(){
     return this.slowed;
   }
@@ -234,7 +238,8 @@ class Game {
 
   //rendering and drawing 
   draw(){
-    this.ctx.clearRect(0,0,DIM_X, DIM_Y);
+    this.ctx.clearRect(0,0,Game.prototype.dim_x, Game.prototype.dim_y);
+
     this.getAllObjects().forEach( obj=>{
       obj.draw(this.ctx);
     })

@@ -15,8 +15,8 @@
   --title-text: white;
   --title-border: rgb(230, 220, 246);
 
-  --height: 0px;
-  --width: 0px;
+  --height: 650px;
+  --width: 900px;
 }
 .flashBar{
   animation: slideLeft 15s infinite linear;
@@ -201,16 +201,16 @@ body{
 
 #game-canvas{
   border: 1px var(--theme) solid; 
-  max-width: var(--width); 
-  max-height: var(--height); 
+  /* max-width: var(--width); 
+  max-height: var(--height);  */
   background-color: #1d1616f6;
   margin: 0; 
   position: relative;
   left: 10px;
   top: 0px;
   z-index: 3;
-  width: var(--width);
-  height: var(--height); 
+  max-width: var(--width);
+  max-height: var(--height); 
 }
 
 #main{
