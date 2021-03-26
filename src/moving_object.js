@@ -49,7 +49,9 @@ class MovingObject{
   reposition(width, height){
     let widthRatio = width / this.pos[0]; 
     let heightRatio =  height / this.pos[1]; 
-
+    let area = width*height; 
+    let areaRatio = area / Game.prototype.area;
+    this.radius/=areaRatio;
     this.pos[0] = Game.prototype.dim_x / widthRatio;
     this.pos[1] = Game.prototype.dim_y/heightRatio;
     this.height = Game.prototype.dim_y;
