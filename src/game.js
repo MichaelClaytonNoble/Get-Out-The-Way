@@ -150,12 +150,12 @@ class Game {
   }
   get dim_x(){
     // return DIM_X;
-    return window.innerWidth/2;
+    return window.innerWidth/2.3;
 
   }
   get dim_y(){
     // return DIM_Y;
-    return window.innerWidth/2 * 0.5625;
+    return Game.prototype.dim_x * 0.6;
   }
 
   get area(){

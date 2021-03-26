@@ -83,7 +83,9 @@ function handleCreateWelcome(elements){
 function typewriter(id, text){
   let element = document.getElementById(id);
   let texts = text.split('---');
-
+  let flag = false;
+  let play = document.getElementById('play');
+  play.addEventListener('click', ()=>{flag=true});
   texts[0] = (texts[0]+'//////////////////////').split('');
   texts[1] = (texts[1]+'//////////////////////').split('');
   texts[2] = (texts[2]+'//////////////////////').split('');
@@ -110,7 +112,7 @@ function typewriter(id, text){
           element.innerHTML = '';
         }
       }
-      if(!texts.length){
+      if(!texts.length || flag){
         stopInterval();
       }
     }
@@ -199,7 +201,7 @@ function flashInstructions(){
   const types = ['energy', 'slow', 'shield', 'alien'];
   let i = 0;
 
-  setTimeout( ()=> setInterval(nextMessage, 4000), 7000);
+  // setTimeout( ()=> setInterval(nextMessage, 4000), 7000);
 
   function nextMessage(){
     titleMessage.textContent = MESSAGES[types[i]];
