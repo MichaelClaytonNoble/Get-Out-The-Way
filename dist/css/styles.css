@@ -22,8 +22,8 @@
   --title-border-initial: rgb(230, 220, 246);
   --title-border: var(--title-border-initial);
 
-  --height: 650px;
-  --width: 900px;
+  --height: 502px;
+  --width: 836px;
 }
 .flashBar{
   animation: slideLeft 15s infinite linear;

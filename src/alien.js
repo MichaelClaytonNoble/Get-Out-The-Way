@@ -7,9 +7,7 @@ export const COLOR = "#00eb23";
 
 class Alien extends MovingObject{
   constructor(options){
-    let area = 900*600; 
-    let areaRatio = area / Game.prototype.area;
-    super({color: COLOR, radius: RADIUS/areaRatio, pos: options['pos'], vel: Util.random45Vec(1), type: 'alien'});
+    super({color: COLOR, radius: RADIUS/Game.prototype.areaRatio, pos: options['pos'], vel: Util.random45Vec(1), type: 'alien'});
   }
 
   pauseMove(){

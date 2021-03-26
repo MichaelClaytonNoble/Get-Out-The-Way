@@ -55,11 +55,14 @@ background-size: 29.70px 29.70px;
   /* background-color: white; */
 }
 #side-menu-li{
-  position: absolute;
+  /* position: absolute; */
+  position:relative;
   top: 20%; 
-  height: 2.5vw;
+  height: 2.4vw;
+  padding-top: 1%;
   font-size: 2vw;
   margin: 10px;
+  /* margin: auto;  */
   border: 1px solid;
   animation: slideup 2s;
   text-align:center;

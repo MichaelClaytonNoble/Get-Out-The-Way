@@ -14,7 +14,7 @@ const SLOW_DURATION = 10000;
 class Game {
   constructor(ctx){
     //canvas and setup variables 
-    this.ctx=ctx;
+    this.ctx=GameView.findCtx();
     
     //shieldBoxes, energyBoxes, aliens, ships, shadows
     this.aliens = []; 
@@ -157,6 +157,11 @@ class Game {
   get area(){
     return Game.prototype.dim_x * Game.prototype.dim_y; 
   }
+
+  get areaRatio(){
+    let area = 836*502; 
+    return area/Game.prototype.area;
+  }
   isSlowed(){
     return this.slowed;
   }
@@ -236,7 +241,7 @@ class Game {
   //rendering and drawing 
   draw(){
     this.ctx.clearRect(0,0,Game.prototype.dim_x, Game.prototype.dim_y);
-    this.drawBackground(); 
+    // this.drawBackground(); 
 
     this.getAllObjects().forEach( obj=>{
       obj.draw(this.ctx);

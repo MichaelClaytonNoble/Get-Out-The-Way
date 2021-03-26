@@ -14,11 +14,9 @@ class BoxObject{
     }
     if(this.type ==='slow'){
       this.color = "#4d82ff";
-    }
-    let area = 900*600; 
+    } 
     this.size = SIZE;
-    let areaRatio = area / Game.prototype.area;
-    this.size/=areaRatio;
+    this.size/=Game.prototype.areaRatio;
     this.radius = this.size/2;
 
     this.collisionDetected = false; 
