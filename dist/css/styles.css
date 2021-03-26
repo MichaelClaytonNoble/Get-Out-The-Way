@@ -227,6 +227,7 @@ body{
 
 .hidden{
   display: none;
+  visibility: hidden;
 }
 
 @keyframes slideStats{

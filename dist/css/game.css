@@ -12,23 +12,22 @@
 }
 #side-menu-flash-instructions{
   display: flex;
+  flex-direction: row;
+  position: absolute;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   height: 70px;
-  width: 100%;
+  width:25%;
 
-  background-color: transparent;
+background-image: linear-gradient(135deg, #B2A2CD 2.38%, transparent 2.38%, transparent 50%, #B2A2CD 50%, #B2A2CD 52.38%, transparent 52.38%, transparent 100%);
+background-size: 29.70px 29.70px;
 }
 
 #flash-instructions-message{
-
-  width: max-content;
-  position: absolute; 
-  margin-left: 2%;
   letter-spacing: 2px;
-  font-size: 1.3vw;
+  font-size: 1.15vw;
   font-family: 'Courier New', Courier, monospace;
-  /* text-align: center;  */
+  text-align: center; 
   color: #ffffff;
   animation: pulse infinite linear 1.5s;
 }
@@ -51,22 +50,22 @@
 }
 #side-menu-list{
   height: 100%;
-  min-width: 290px;
+  min-width: 18vw;
+  position: absolute;
   /* background-color: white; */
 }
 #side-menu-li{
-  position: relative;
+  position: absolute;
   top: 20%; 
-  height: 40px;
-  font-size: 40px;
+  height: 2.5vw;
+  font-size: 2vw;
   margin: 10px;
   border: 1px solid;
   animation: slideup 2s;
   text-align:center;
   border-radius: 0 20px 20px 0;
+  min-width: 18vw;
 }
-
-
 
 @keyframes slideup{
   0%{
@@ -85,7 +84,8 @@
   flex-direction: column;
   justify-content: center; 
   align-items: center;
-  margin: 5px;
+  margin-right: 5px;
+  margin-left: -12.5vw;
   color: white;
   font-weight: bolder;
   font-size: 1.6vw;

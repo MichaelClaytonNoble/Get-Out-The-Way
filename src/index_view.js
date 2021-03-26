@@ -234,9 +234,10 @@ export function createCanvas(){
 
 export function flashInstructions(){
     const flashInstructions = document.getElementById("side-menu-flash-instructions")
+    flashInstructions.classList.remove('hidden');
     const types = ['energy', 'slow', 'shield', 'alien'];
     let i = 0;
-    
+
     const nextMessage = ()=>{
       const message = document.createElement('li'); 
       message.id = "flash-instructions-message"; 
@@ -250,7 +251,7 @@ export function flashInstructions(){
       i = (1+i)%types.length; 
       setTimeout(()=>flashInstructions.removeChild(message), 4000);
     }
-
+    nextMessage();
    setInterval(nextMessage, 4000)
     
   }
