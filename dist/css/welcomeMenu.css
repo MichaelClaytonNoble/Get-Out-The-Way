@@ -12,7 +12,7 @@
   justify-content: center; 
 }
 .welcomeButtons{
-  height:80px; 
+  height:2vw; 
   width: 100px; 
   font-weight: bold; 
   margin: 10px;
@@ -24,7 +24,7 @@
   max-height: 30%;
   height: 30%;
   color: white; 
-  font-size: 30px; 
+  font-size: 1vw; 
   font-family: 'Courier New', Courier, monospace;
   font-weight: bolder;
 }

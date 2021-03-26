@@ -226,8 +226,8 @@ export function createCanvas(){
       let height = canvas.height;
       let width = canvas.width;
 
-      canvas.width = window.innerWidth/2;
-      canvas.height = canvas.width * 0.5625;
+      canvas.width = window.innerWidth/2.3;
+      canvas.height = canvas.width * 0.6;
       if(!justCreated){
         GameView.findCtx().scale(canvas.width/width, canvas.height/height);
       }
