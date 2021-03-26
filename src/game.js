@@ -241,7 +241,7 @@ class Game {
   //rendering and drawing 
   draw(){
     this.ctx.clearRect(0,0,Game.prototype.dim_x, Game.prototype.dim_y);
-    // this.drawBackground(); 
+    this.drawBackground(); 
 
     this.getAllObjects().forEach( obj=>{
       obj.draw(this.ctx);

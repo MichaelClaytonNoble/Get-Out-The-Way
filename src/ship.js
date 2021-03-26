@@ -37,7 +37,7 @@ class Ship extends MovingObject{
       this.vel = [0,0]; 
       this.power();
       super.move();
-      this.vel = [this.vel[0]/8,this.vel[1]/8];
+      this.vel = [this.vel[0]/4,this.vel[1]/4];
       this.outOfBounds();
   }
 
