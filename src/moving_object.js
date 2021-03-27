@@ -1,6 +1,6 @@
 
 import Game from './game.js'; 
-
+const NORMAL_FRAME_TIME_DELTA= 1000/60;
 
 class MovingObject{
   constructor(options){
@@ -31,10 +31,17 @@ class MovingObject{
   }
 
 
-  move(){ 
-    this.pos[0] += this.vel[0];
-    this.pos[1]+=this.vel[1]; 
+  move(timeDelta){ 
+    const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA
+    const offsetX = this.vel[0] * velocityScale;
+    const offsetY = this.vel[1] * velocityScale;
+    this.pos[0] += this.vel[0] + offsetX;
+    this.pos[1]+=this.vel[1] + offsetY; 
   }
+  // move(){ 
+  //   this.pos[0] += this.vel[0];
+  //   this.pos[1]+=this.vel[1]; 
+  // }
 
   isCollidedWith(otherObject){
     let [x,y] = this.pos;

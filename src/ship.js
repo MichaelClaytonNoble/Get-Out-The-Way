@@ -33,15 +33,15 @@ class Ship extends MovingObject{
       this.vel[0]+=impulse[0];
       this.vel[1]+=impulse[1]; 
   }
-  move(){
+  move(timeDelta){
       this.vel = [0,0]; 
       this.power();
-      super.move();
-      // this.vel = [this.vel[0]/4,this.vel[1]/4];
+      super.move(timeDelta);
       this.outOfBounds();
   }
 
   draw(){
+    console.log("hello");
     let radians = {
       'upright': 0.785398,
       'downleft': 3.75246, 

@@ -178,9 +178,12 @@ class Game {
       this.slowBoxes = this.slowBoxes.filter(slow => slow.collisionDetected===false);
     }
   }
-  moveObjects(){
-    this.getAllMoveObjects().forEach( obj => obj.move());
+  moveObjects(delta){
+    this.getAllMoveObjects().forEach( obj => obj.move(delta));
   }
+  // moveObjects(){
+  //   this.getAllMoveObjects().forEach( obj => obj.move());
+  // }
 
   action(object){
     this.remove(object.type);
@@ -241,13 +244,13 @@ class Game {
   //rendering and drawing 
   draw(){
     this.ctx.clearRect(0,0,Game.prototype.dim_x, Game.prototype.dim_y);
-    this.drawBackground(); 
+    // this.drawBackground(); 
 
     this.getAllObjects().forEach( obj=>{
       obj.draw(this.ctx);
     })
 
-    this.ship.draw(this.ctx);
+    this.ship.draw();
   }
   drawBackground(){
     let raised = '#009900';

@@ -14,6 +14,7 @@ class GameView {
     this.bindKeyHandlers = this.bindKeyHandlers.bind(this); 
     this.handleMovements = this.handleMovements.bind(this); 
     this.createEventsTimers = this.createEventsTimers.bind(this); 
+    this.step = this.step.bind(this);
   }
 
 
@@ -21,8 +22,44 @@ class GameView {
   start(){
     this.handleMovements();
     this.bindKeyHandlers();
+
+    this.lastTime = 0;
+    //start animation 
+    
+    requestAnimationFrame(this.animate.bind(this));
     this.createEventsTimers();
   }
+  
+  //animation 
+  animate(time){
+    const timeDelta = time - this.lastTime;
+    this.step(timeDelta);
+    this.game.draw();
+    this.lastTime = time;
+    
+    requestAnimationFrame(this.animate.bind(this));
+  }
+  
+  //handle events 
+  step(delta){
+    this.game.moveObjects(delta);
+    this.game.moveShip(delta);
+    this.game.checkCollisions();
+  }
+  createEventsTimers(){
+    // setInterval(this.game.drawBackground, 100);
+    // setInterval(this.game.draw, 20);
+    
+    // setInterval(this.game.moveObjects, 20); 
+    // setInterval(this.game.moveShip, 7);
+    // setInterval(this.game.checkCollisions, 20);
+
+    setInterval(this.game.addShieldBox, 23100);
+    setInterval(this.game.addShieldBox, 61300);
+    setInterval(this.game.addSlowBox, 17000);
+    setInterval(this.game.reducePoints, 400);
+  }
+  
 
   //game alerts and status changes 
   static changeTheme(color, subject='--theme'){
@@ -93,21 +130,6 @@ class GameView {
       default: break; 
     }
   }
-  
-  //handle events 
-  createEventsTimers(){
-    // setInterval(this.game.drawBackground, 100);
-    setInterval(this.game.draw, 20);
-    
-    setInterval(this.game.moveObjects, 20); 
-    setInterval(this.game.moveShip, 7);
-    setInterval(this.game.checkCollisions, 20);
-    setInterval(this.game.addShieldBox, 23100);
-    setInterval(this.game.addShieldBox, 61300);
-    setInterval(this.game.addSlowBox, 17000);
-    setInterval(this.game.reducePoints, 400);
-  }
-  
   //handle movements 
   static MOVES(){
     return {

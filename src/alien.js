@@ -14,9 +14,9 @@ class Alien extends MovingObject{
     this.stop = true;
     setTimeout(()=>this.stop=false, 5000);
   }
-  move(){
+  move(timeDelta){
     if(!this.stop){
-      super.move();
+      super.move(timeDelta);
       this.reflect();
     }
   }
