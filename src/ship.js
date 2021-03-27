@@ -12,6 +12,11 @@ class Ship extends MovingObject{
     this.outOfBounds = this.outOfBounds.bind(this); 
   }
 
+  get _pos(){
+    return this.pos;
+  }
+ 
+
   power(){
       let impulse = [0,0];
       if(window.keyFlags['up']){

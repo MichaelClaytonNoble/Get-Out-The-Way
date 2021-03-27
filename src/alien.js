@@ -26,10 +26,10 @@ class Alien extends MovingObject{
     const dim_x = Game.prototype.dim_x;
     const dim_y = Game.prototype.dim_y; 
 
-    if(x>=dim_x || x<=0){
+    if(x>dim_x || x<=1){
       this.vel=[this.vel[0]*-1,this.vel[1]];
     }
-    if(y>= dim_y || y<=0){
+    if(y> dim_y || y<1){
       this.vel=[this.vel[0],this.vel[1]*-1];
     }
   }

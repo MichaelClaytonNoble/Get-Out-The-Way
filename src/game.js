@@ -15,9 +15,12 @@ class Game {
   constructor(ctx){
     //canvas and setup variables 
     this.ctx=GameView.findCtx();
-    
     //shieldBoxes, energyBoxes, aliens, ships, shadows
-    this.aliens = []; 
+    
+    this.ships = [Game.createShip()];
+    this.ship = this.ships[0];
+    this.aliens = new Array(6).fill(0).map( alien =>{ console.log("hi"); return new Alien({pos: Game.randomPosition()})});
+    // this.aliens = []; 
     this.shadows = []; 
     this.shieldBoxes = [];
     this.energyBoxes = [];
@@ -26,17 +29,15 @@ class Game {
     this.addShieldBox(); 
     this.addEnergyBox(); 
     this.addSlowBox();
-    this.addAlien();
-    this.addAlien();
-    this.addAlien();
-    this.addAlien();
-    this.addAlien();
-    this.addAlien();
+    // this.addAlien();
+    // this.addAlien();
+    // this.addAlien();
+    // this.addAlien();
+    // this.addAlien();
+    // this.addAlien();
 
     // this.addShadow(); 
     
-    this.ships = [Game.createShip()];
-    this.ship = this.ships[0];
 
     //shields & points
     this.score = 0;
@@ -50,7 +51,7 @@ class Game {
   }
 
   //add objects to the game 
-  addAlien(){
+  addAlien(n=1){
     const alien= new Alien({pos: Game.randomPosition()});
     this.aliens.push(alien); 
   }
@@ -142,7 +143,14 @@ class Game {
     return new Ship({pos: [300,300]}); 
   }
   static randomPosition(){
-    return [Math.floor(Math.random() * Math.floor(Game.prototype.dim_x)), Math.floor(Math.random() * Math.floor(Game.prototype.dim_y))];
+    let position = [Math.floor(Math.random() * Math.floor(Game.prototype.dim_x)), Math.floor(Math.random() * Math.floor(Game.prototype.dim_y))];
+    if(Game.prototype._ship){
+      if ( Math.abs(Game.prototype._ship._pos[0] - position[0]) < 50 || Math.abs(Game.prototype._ship._pos[1] - position[1] < 50) ){
+        console.log("nope"); 
+        setTimeout(randomPosition, 1);
+      }
+    }
+    return position; 
   }
   get dim_x(){
     // return DIM_X;
@@ -162,6 +170,11 @@ class Game {
     let area = 836*502; 
     return area/Game.prototype.area;
   }
+
+  get _ship(){
+    return this.ship;
+  }
+ 
   isSlowed(){
     return this.slowed;
   }
