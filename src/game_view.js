@@ -98,6 +98,7 @@ class GameView {
   createEventsTimers(){
     // setInterval(this.game.drawBackground, 100);
     setInterval(this.game.draw, 20);
+    
     setInterval(this.game.moveObjects, 20); 
     setInterval(this.game.moveShip, 7);
     setInterval(this.game.checkCollisions, 20);
