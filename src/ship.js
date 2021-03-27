@@ -8,7 +8,7 @@ class Ship extends MovingObject{
   constructor(options){
     super({color: COLOR, radius: RADIUS/Game.prototype.areaRatio, pos: options['pos'], vel: [0,0], type: 'ship'});
 
-    this.ctx = ctx;
+    this.ctx = GameView.findCtx();
     this.outOfBounds = this.outOfBounds.bind(this); 
   }
 
@@ -41,7 +41,6 @@ class Ship extends MovingObject{
   }
 
   draw(){
-    console.log("hello");
     let radians = {
       'upright': 0.785398,
       'downleft': 3.75246, 

@@ -90,10 +90,10 @@ class Game {
   }
   
   getAllObjects(){
-    return [].concat(this.aliens, this.shieldBoxes, this.energyBoxes, this.slowBoxes, this.shadows);
+    return [].concat(this.aliens, this.shieldBoxes, this.energyBoxes, this.slowBoxes);
   }
   getAllMoveObjects(){
-    return [].concat(this.aliens, this.shadows);
+    return [].concat(this.aliens, this.ship);
   }
 
   //manipulate objects
@@ -244,13 +244,12 @@ class Game {
   //rendering and drawing 
   draw(){
     this.ctx.clearRect(0,0,Game.prototype.dim_x, Game.prototype.dim_y);
-    // this.drawBackground(); 
-
+    this.drawBackground(); 
+    this.ship.draw();
     this.getAllObjects().forEach( obj=>{
-      obj.draw(this.ctx);
+      obj.draw();
     })
 
-    this.ship.draw();
   }
   drawBackground(){
     let raised = '#009900';

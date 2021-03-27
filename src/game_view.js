@@ -9,8 +9,8 @@ const PLAYING =[];
 
 class GameView {
   constructor(){
-    this.game = new Game(GameView.findCtx()); 
-
+    this.game = new Game(); 
+    window.ctx = GameView.findCtx();
     this.bindKeyHandlers = this.bindKeyHandlers.bind(this); 
     this.handleMovements = this.handleMovements.bind(this); 
     this.createEventsTimers = this.createEventsTimers.bind(this); 
@@ -22,12 +22,10 @@ class GameView {
   start(){
     this.handleMovements();
     this.bindKeyHandlers();
-
-    this.lastTime = 0;
-    //start animation 
-    
-    requestAnimationFrame(this.animate.bind(this));
     this.createEventsTimers();
+
+    // //start animation 
+    requestAnimationFrame(this.animate.bind(this));
   }
   
   //animation 
@@ -35,29 +33,39 @@ class GameView {
     const timeDelta = time - this.lastTime;
     this.step(timeDelta);
     this.game.draw();
-    this.lastTime = time;
     
+    if(time-this.reducePointsTime >= 400){
+      this.game.reducePoints();
+      this.reducePointsTime = time;
+    }
+    if(time-this.addShieldBoxTime1 >= 23100){
+      this.game.addShieldBox();
+      this.addShieldBoxTime1 = time;
+    }
+    if(time-this.addShieldBoxTime2 >= 61300){
+      this.game.addShieldBox();
+      this.addShieldBoxTime2 = time;
+    }
+    if(time-this.addSlowBoxTime >= 17000){
+      this.game.addSlowBox(); 
+      this.addSlowBoxTime = time;
+    }
+    
+    this.lastTime = time;
     requestAnimationFrame(this.animate.bind(this));
+  }
+  createEventsTimers(){
+    this.lastTime = 0; 
+    this.addShieldBoxTime1=0;
+    this.addShieldBoxTime2=0;
+    this.addSlowBoxTime = 0;
+    this.reducePointsTime =0;
   }
   
   //handle events 
   step(delta){
     this.game.moveObjects(delta);
-    this.game.moveShip(delta);
     this.game.checkCollisions();
-  }
-  createEventsTimers(){
-    // setInterval(this.game.drawBackground, 100);
-    // setInterval(this.game.draw, 20);
-    
-    // setInterval(this.game.moveObjects, 20); 
-    // setInterval(this.game.moveShip, 7);
-    // setInterval(this.game.checkCollisions, 20);
-
-    setInterval(this.game.addShieldBox, 23100);
-    setInterval(this.game.addShieldBox, 61300);
-    setInterval(this.game.addSlowBox, 17000);
-    setInterval(this.game.reducePoints, 400);
   }
   
 

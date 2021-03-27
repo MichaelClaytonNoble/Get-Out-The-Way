@@ -28,7 +28,7 @@ class BoxObject{
 
     window.addEventListener('resize', ()=>this.reposition(this.width, this.height), false);
   }
-  draw(ctx){
+  draw(){
    regular(ctx, this.pos, this.color, this.size);
   }
   drawBoundary(){
