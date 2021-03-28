@@ -141,10 +141,10 @@ class GameView {
   //handle movements 
   static MOVES(){
     return {
-      up: [0, -1.35],
-      left: [-1.35, 0],
-      down: [0, 1.35],
-      right: [1.35, 0]
+      up: [0, -1.5],
+      left: [-1.5, 0],
+      down: [0, 1.5],
+      right: [1.5, 0]
     }
     // return {
     //   up: [0, -1.5/(Game.prototype.areaRatio-Game.prototype.areaRatio*.2)],

@@ -37,7 +37,7 @@ export function createWelcome(){
 
   let instructionsText = "Your goal is to collect the red energy cubes while evading enemy hive ships.";
   instructionsText += "\n\n Yellow cubes provide extra shield strength and blue cubes slow the enemy.";
-  instructionsText += "---Use the arrow keys to move the ship around the map, \n\nwhen your ship is blue you may press the spacebar to deploy defensive maneuvers."
+  instructionsText += "---Blue cubes detonate killing aliens within a radius, \n\n Use the arrow keys to control your ships."
   instructionsText += "---Good luck. \n\n --Mike"
   instructions.setAttribute('disabled', true); 
   
@@ -79,7 +79,6 @@ function handleCreateWelcome(elements){
     displayScoreBoard();
   })
 }
-
 function typewriter(id, text){
   let element = document.getElementById(id);
   let texts = text.split('---');
@@ -137,7 +136,7 @@ function typewriterFX(){
   });
 }
 
-function displayScoreBoard(){
+export function displayScoreBoard(){
 
 }
 

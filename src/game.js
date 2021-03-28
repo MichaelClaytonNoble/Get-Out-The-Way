@@ -204,7 +204,6 @@ class Game {
       type: 'kill',
       pos: nowBox.pos
     });
-    console.log(killBox);
     this.killBoxes.push(killBox);
     this.killBoxes[this.killBoxes.length-1].active = true;
     }
@@ -273,8 +272,6 @@ class Game {
           this.killBoxes.forEach( kill => {
             if(allObjects[i].isCollidedWith(kill)){
               allObjects[i].collisionDetected = true;
-              console.log("collision");
-              console.log(allObjects[i]);
             }
 
           })

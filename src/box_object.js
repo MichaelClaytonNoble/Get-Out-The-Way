@@ -46,23 +46,28 @@ class BoxObject{
     let id = setInterval(()=>{
         if(this._active){
 
-          if(this.set){this.zone=this.size*3; this.set=false}
-          this.radius+=1;
-          if(this.zone > 1){this.zone-=1;}
-          console.log(this.radius);
+          if(this.set){this.zone=this.size*5; this.set=false}
+          this.radius+=10;
+          if(this.zone > 10){this.zone-=10;}
           this.draw();
-          if(this.radius >= this.size*3 || this.zone <= 1){
+          if(this.radius >= this.size*5 || this.zone <= 10){
             this.collisionDetected=true;
             clearInterval(id);
           }
         }
-      }, 1);
+      }, 30);
     }
   
   draw(){
     if(this.type ==='kill'){
-      killZone(ctx, this.pos, 'silver', this.zone);
-      killZone(ctx, this.pos, this.color, this.radius);
+      killZone(ctx, this.pos, 'silver', this.zone*.8);
+      killZone(ctx, this.pos, 'silver', this.zone*.5);
+      killZone(ctx, this.pos, 'silver', this.zone*.2);
+      killZone(ctx, this.pos, 'silver', this.zone*.1);
+      killZone(ctx, this.pos, this.color, this.radius*.8);
+      killZone(ctx, this.pos, "#f400a1", this.radius*.5);
+      killZone(ctx, this.pos, this.color, this.radius*.2);
+      killZone(ctx, this.pos, this.color, this.radius*.1);
     }
     else{
       regular(ctx, this.pos, this.color, this.size);
