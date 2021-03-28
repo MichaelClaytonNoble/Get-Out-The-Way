@@ -203,6 +203,7 @@ export function createCanvas(){
   let canvas = document.createElement('canvas');
   canvas.classList.add('hidden');
   canvas.id="game-canvas";
+  canvas.height = 502;
   layer.append(canvas);
   let justCreated = true; 
   (function () {
@@ -215,14 +216,19 @@ export function createCanvas(){
     function resizeCanvas() {
       let height = canvas.height;
       let width = canvas.width;
+      if(justCreated){
+        canvas.height = 502;
+        canvas.width = 836;
+      }
 
       canvas.width = Math.floor(window.innerWidth/2.3);
-      let aspect = window.innerHeight*1.2 / window.innerWidth; 
+      let aspect = window.innerHeight*1.2 / (window.innerWidth); 
       canvas.height = Math.floor(canvas.width * aspect);
+
       if(!justCreated){
         GameView.findCtx().scale(canvas.width/width, canvas.height/height);
+        
       }
-      
       let root = document.documentElement;
       root.style.setProperty('--height', canvas.height+'px');
       root.style.setProperty('--width', canvas.width+'px');

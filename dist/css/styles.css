@@ -176,14 +176,15 @@ body{
 #layers{
   height: calc(var(--height) + 100px);
   width: calc(var(--width) + 100px); 
-  background-color: #1d1616c9;
+  /* background-color: #1d1616c9; */
+  background-color: #1d1616c5;
   position: relative;
   border: 3px outset var(--theme); 
 }
 #layer1{
   height: calc(var(--height) + 80px);
   width: calc(var(--width) + 80px); 
-  background-color: #1d1616c5;
+  /* background-color: #1d1616c5; */
   position: relative;
   border: 1px solid var(--theme); 
   left: 10px;
@@ -193,7 +194,7 @@ body{
   height: calc(var(--height) + 60px);
   width: calc(var(--width) + 60px); 
   
-  background-color: #1d1616d5;
+  /* background-color: #1d1616d5; */
   position: relative;
   top: 4px;
   border: 1px solid var(--theme); 
@@ -203,7 +204,7 @@ body{
 #layer3{
   height: calc(var(--height) + 40px);
   width: calc(var(--width) + 40px); 
-  background-color: #1d1616e6;
+  /* background-color: #1d1616e6; */
   position: relative;
   border: 1px solid var(--theme); 
   top: 6px;
@@ -212,7 +213,7 @@ body{
 #layer4{
   height: calc(var(--height) + 20px);
   width: calc(var(--width) + 20px); 
-  background-color: #1d1616f6;
+  /* background-color: #1d1616f6; */
   position: relative;
   border: 1px solid var(--theme); 
   top: 8px;
@@ -227,7 +228,8 @@ body{
   border: 1px var(--theme) solid; 
   /* max-width: var(--width); 
   max-height: var(--height);  */
-  background-color: #1d1616f6;
+  background-color: #0f0d0d20;
+  /* background-color: #1d1616f6; */
   margin: 0; 
   position: relative;
   left: 10px;

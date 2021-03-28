@@ -29,3 +29,11 @@ export function regular(ctx, pos, color, size){
     ctx.closePath(); 
     ctx.stroke();
   }
+
+  export function killZone(ctx, pos, color, radius){
+    if(radius <= 1){radius === 1;}
+    ctx.strokeStyle = color; 
+    ctx.beginPath();
+    ctx.arc(pos[0], pos[1], radius, 0, 2*Math.PI, true);
+    ctx.stroke();
+  }

@@ -19,12 +19,13 @@ class Game {
     
     this.ships = [Game.createShip()];
     this.ship = this.ships[0];
-    this.aliens = new Array(6).fill(0).map( alien =>{ console.log("hi"); return new Alien({pos: Game.randomPosition()})});
+    this.aliens = new Array(6).fill(0).map( alien =>{ return new Alien({pos: Game.randomPosition()})});
     // this.aliens = []; 
     this.shadows = []; 
     this.shieldBoxes = [];
     this.energyBoxes = [];
-    this.slowBoxes = []; 
+    this.slowBoxes = [];
+    this.killBoxes = [];
 
     this.addShieldBox(); 
     this.addEnergyBox(); 
@@ -77,12 +78,18 @@ class Game {
     this.energyBoxes.push(energyBox);
   }
   addSlowBox(){
-    this.slowBoxes.pop();
+    // this.slowBoxes.pop();
     const slowBox = new BoxObject({
       type: 'slow',
       pos: Game.randomPosition()
     });
+    const killBox = new BoxObject({
+      type: 'kill',
+      pos: slowBox.pos
+    });
+
     this.slowBoxes.push(slowBox);
+    this.killBoxes.push(killBox);
     setTimeout(()=>this.slowBoxes.pop(), 9000);
 
   }
@@ -144,7 +151,6 @@ class Game {
   }
   static randomPosition(){
     let position = [Math.floor(Math.random() * (Game.prototype.dim_x * .95) + Game.prototype.dim_x*.05), Math.floor(Math.random() * (Game.prototype.dim_y*.95) + Game.prototype.dim_y*.05)];
-    console.log("position", position, "X: ", Game.prototype.dim_x, "Y: ", Game.prototype.dim_y); 
     return position; 
   }
   get dim_x(){
@@ -177,15 +183,21 @@ class Game {
 
   //game play 
   remove(objType){
-    if(objType === 'alien'){
+    if(objType === 'alien' || objType === 'kill'){
       this.aliens = this.aliens.filter( alien=> alien.collisionDetected===false);
     }
     if( objType ==='shield'){
       this.shieldBoxes = this.shieldBoxes.filter(shield => shield.collisionDetected===false);
     }
     if( objType ==='slow'){
-      this.slowBoxes = this.slowBoxes.filter(slow => slow.collisionDetected===false);
+      let ind;
+      this.slowBoxes = this.slowBoxes.filter((slow,i) => {ind=i; return slow.collisionDetected===false});
+      this.killBoxes[ind].active = true;
     }
+    if( objType === 'kill'){
+      this.killBoxes = this.killBoxes.filter( kill => {kill.collisionDetected === false});
+    }
+
   }
   moveObjects(delta){
     this.getAllMoveObjects().forEach( obj => obj.move(delta));
@@ -231,6 +243,10 @@ class Game {
           GameView.changeTheme('var(--forward)', '--bar-direction'); 
           this.slowed=false;
         }, SLOW_DURATION);
+        break;
+      case 'kill':
+
+        break;
       default: break; 
     }
   }
@@ -239,9 +255,19 @@ class Game {
     const allObjects = this.getAllObjects();
     for(let i=0; i<allObjects.length; i++){
       if(allObjects[i] !== undefined){
+        if(allObjects[i].type ==='alien'){
+          this.killBoxes.forEach( kill => {
+            if(allObjects[i].isCollidedWith(kill)){
+              allObjects[i].collisionDetected = true;
+              console.log("collision");
+              console.log(allObjects[i]);
+            }
+
+          })
+        }
         if(allObjects[i].isCollidedWith(this.ships[0])){
-            allObjects[i].collisionDetected = true;
-            this.action(allObjects[i]); 
+          allObjects[i].collisionDetected = true;
+          this.action(allObjects[i]); 
         };
       }
     }
@@ -258,6 +284,7 @@ class Game {
     this.getAllObjects().forEach( obj=>{
       obj.draw();
     })
+    this.killBoxes.forEach( kill => kill.draw());
 
   }
   drawBackground(){
