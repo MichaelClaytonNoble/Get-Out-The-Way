@@ -131,7 +131,8 @@ function typewriterFX(){
     autoplay: true,
     loop: false,
     preload: true,
-    volume: volume,
+    volume: 0,
+    // volume: volume,
     rate: 2
   });
 }
@@ -162,7 +163,8 @@ export function playMusic(src){
       autoplay: true,
       loop: false,
       preload: true,
-      volume: volume,
+      volume: 0,
+      // volume: volume,
       onend: ()=>{if(src!=='OpeningTheme.mp3'){return cb()}}
     });
     currentSong = music; 

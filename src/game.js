@@ -83,13 +83,13 @@ class Game {
       type: 'slow',
       pos: Game.randomPosition()
     });
-    const killBox = new BoxObject({
-      type: 'kill',
-      pos: slowBox.pos
-    });
+    // const killBox = new BoxObject({
+    //   type: 'kill',
+    //   pos: slowBox.pos
+    // });
+    // this.killBoxes.push(killBox);
 
     this.slowBoxes.push(slowBox);
-    this.killBoxes.push(killBox);
     setTimeout(()=>this.slowBoxes.pop(), 9000);
 
   }
@@ -190,12 +190,26 @@ class Game {
       this.shieldBoxes = this.shieldBoxes.filter(shield => shield.collisionDetected===false);
     }
     if( objType ==='slow'){
-      let ind;
-      this.slowBoxes = this.slowBoxes.filter((slow,i) => {ind=i; return slow.collisionDetected===false});
-      this.killBoxes[ind].active = true;
+      let nowBox;
+      this.slowBoxes = this.slowBoxes.filter( slow => {
+        if(slow.collisionDetected){
+          nowBox=slow;
+        }
+        else{
+          return slow.collisionDetected===false
+        }
+      });
+
+    const killBox = new BoxObject({
+      type: 'kill',
+      pos: nowBox.pos
+    });
+    console.log(killBox);
+    this.killBoxes.push(killBox);
+    this.killBoxes[this.killBoxes.length-1].active = true;
     }
     if( objType === 'kill'){
-      this.killBoxes = this.killBoxes.filter( kill => {kill.collisionDetected === false});
+      this.killBoxes = this.killBoxes.filter( kill => kill.collisionDetected === false);
     }
 
   }
@@ -271,6 +285,7 @@ class Game {
         };
       }
     }
+    this.remove('kill');
   }
   moveShip(){
     this.ship.move();

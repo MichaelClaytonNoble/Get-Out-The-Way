@@ -46,14 +46,17 @@ class BoxObject{
     let id = setInterval(()=>{
         if(this._active){
 
-          if(this.set){this.zone=this.size*2; this.set=false}
+          if(this.set){this.zone=this.size*3; this.set=false}
           this.radius+=1;
           if(this.zone > 1){this.zone-=1;}
-          if(this.radius >= this.size*2 || this.zone <= 1){
+          console.log(this.radius);
+          this.draw();
+          if(this.radius >= this.size*3 || this.zone <= 1){
+            this.collisionDetected=true;
             clearInterval(id);
           }
         }
-      }, 3);
+      }, 1);
     }
   
   draw(){
