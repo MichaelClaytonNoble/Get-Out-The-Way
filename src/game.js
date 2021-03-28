@@ -143,27 +143,23 @@ class Game {
     return new Ship({pos: [300,300]}); 
   }
   static randomPosition(){
-    let position = [Math.floor(Math.random() * Math.floor(Game.prototype.dim_x)), Math.floor(Math.random() * Math.floor(Game.prototype.dim_y))];
-    if(Game.prototype._ship){
-      if ( Math.abs(Game.prototype._ship._pos[0] - position[0]) < 50 || Math.abs(Game.prototype._ship._pos[1] - position[1] < 50) ){
-        console.log("nope"); 
-        setTimeout(randomPosition, 1);
-      }
-    }
+    let position = [Math.floor(Math.random() * (Game.prototype.dim_x * .95) + Game.prototype.dim_x*.05), Math.floor(Math.random() * (Game.prototype.dim_y*.95) + Game.prototype.dim_y*.05)];
+    console.log("position", position, "X: ", Game.prototype.dim_x, "Y: ", Game.prototype.dim_y); 
     return position; 
   }
   get dim_x(){
     // return DIM_X;
-    return window.innerWidth/2.3;
+    return Math.floor(window.innerWidth/2.3);
 
   }
   get dim_y(){
     // return DIM_Y;
-    return Game.prototype.dim_x * 0.6;
+    let aspect = window.innerHeight*1.2 / window.innerWidth; 
+    return Math.floor(Game.prototype.dim_x * aspect);
   }
 
   get area(){
-    return Game.prototype.dim_x * Game.prototype.dim_y; 
+    return Math.floor(Game.prototype.dim_x * Game.prototype.dim_y); 
   }
 
   get areaRatio(){

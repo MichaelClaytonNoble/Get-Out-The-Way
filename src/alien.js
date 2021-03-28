@@ -7,7 +7,8 @@ export const COLOR = "#00eb23";
 
 class Alien extends MovingObject{
   constructor(options){
-    super({color: COLOR, radius: RADIUS/Game.prototype.areaRatio, pos: options['pos'], vel: Util.random45Vec(1), type: 'alien'});
+    let speed= Math.random()*.8 + .2; 
+    super({color: COLOR, radius: RADIUS/Game.prototype.areaRatio, pos: options['pos'], vel: Util.random45Vec(speed), type: 'alien'});
   }
 
   pauseMove(){
@@ -25,16 +26,16 @@ class Alien extends MovingObject{
     let y = this.pos[1]; 
     const dim_x = Game.prototype.dim_x;
     const dim_y = Game.prototype.dim_y; 
+    this.outOfBounds(); 
 
-    if(x>dim_x || x<=1){
+    if( (x + this.radius)>=dim_x || (x - this.radius)<=0){
       this.vel=[this.vel[0]*-1,this.vel[1]];
     }
-    if(y> dim_y || y<1){
+    if((y + this.radius)>= dim_y || (y - this.radius)<=0){
       this.vel=[this.vel[0],this.vel[1]*-1];
     }
   }
   draw(){
-  
     ctx.strokeStyle = "#00eb23";
     ctx.beginPath(); 
     ctx.arc(

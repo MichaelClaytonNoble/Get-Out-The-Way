@@ -30,6 +30,26 @@ class MovingObject{
     ctx.fill();
   }
 
+  outOfBounds(){
+    let dim_x = Game.prototype.dim_x;
+    let dim_y = Game.prototype.dim_y; 
+
+    let [x,y] = this.pos; 
+
+    if(x >= dim_x-this.radius){
+      this.pos[0] = dim_x-this.radius; 
+    }
+    if(x<= 0+this.radius){
+      this.pos[0] = 0+this.radius;
+    }
+    if(y >= dim_y-this.radius){
+      this.pos[1] = dim_y-this.radius; 
+    }
+    if(y<= 0+this.radius){
+      this.pos[1] = 0+this.radius;
+    }
+  }
+
 
   move(timeDelta){ 
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA
@@ -38,10 +58,6 @@ class MovingObject{
     this.pos[0] += this.vel[0] + offsetX;
     this.pos[1]+=this.vel[1] + offsetY; 
   }
-  // move(){ 
-  //   this.pos[0] += this.vel[0];
-  //   this.pos[1]+=this.vel[1]; 
-  // }
 
   isCollidedWith(otherObject){
     let [x,y] = this.pos;

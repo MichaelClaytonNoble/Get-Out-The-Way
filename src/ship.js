@@ -46,6 +46,10 @@ class Ship extends MovingObject{
   }
 
   draw(){
+    this.ctx.strokeStyle = "#f400a1";
+    this.ctx.beginPath();
+    this.ctx.arc(this.pos[0],this.pos[1],this.radius,0,2*Math.PI, false);
+    this.ctx.stroke();
     let radians = {
       'upright': 0.785398,
       'downleft': 3.75246, 
@@ -134,7 +138,6 @@ class Ship extends MovingObject{
      y = [start[1], strokea[1], strokeb[1], strokec[1], stroked[1], stroke2[1]];
 
     this.ctx.strokeStyle = "#FFD700";
-    
      rotated = Game.rotatePoints(x,y,this.pos[0],this.pos[1], cRadians)
     this.ctx.beginPath();
     start = [rotated['x'][0], rotated['y'][0]];
@@ -154,26 +157,6 @@ class Ship extends MovingObject{
     
     this.ctx.stroke();
     this.ctx.lineWidth=1;
-  }
-
-  outOfBounds(){
-    let dim_x = Game.prototype.dim_x;
-    let dim_y = Game.prototype.dim_y; 
-
-    let [x,y] = this.pos; 
-
-    if(x >= dim_x-this.radius){
-      this.pos[0] = dim_x-this.radius; 
-    }
-    if(x<= 0+this.radius){
-      this.pos[0] = 0+this.radius;
-    }
-    if(y >= dim_y-this.radius){
-      this.pos[1] = dim_y-this.radius; 
-    }
-    if(y<= 0+this.radius){
-      this.pos[1] = 0+this.radius;
-    }
   }
 }
 
