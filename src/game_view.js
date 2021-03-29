@@ -17,10 +17,12 @@ class GameView {
     this.step = this.step.bind(this);
     this.animateOn=true;
     this.reset = this.reset.bind(this);
+    this.newGame = this.newGame.bind(this); 
   }
 
-
-
+  newGame(){
+    this.game = new Game(); 
+  }
   start(){
     GameView.findCtx().save();
     this.handleMovements();
@@ -32,6 +34,7 @@ class GameView {
   }
 
   reset(){
+    this.animateOn=true;
     this.game = new Game();
     this.startAnimation();
   }
@@ -41,7 +44,6 @@ class GameView {
     window.addEventListener('gameOver', ()=> {
       this.animateOn = false;
       GameView.findCtx().restore();
-      GameView.gameOver();
     })
   }
   
@@ -226,10 +228,7 @@ class GameView {
     return document.getElementById("game-canvas").getContext('2d'); 
   }
 
-  //game over
-  static gameOver(){
-
-  }
+ 
 }
 
 export default GameView; 

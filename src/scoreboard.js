@@ -1,10 +1,7 @@
 import firebase from 'firebase/app';
-import 'firebase/analytics';
-
-import 'firebase/auth';
 import 'firebase/firestore'; 
 
-let db;
+
 export function init(){
 
   // Your web app's Firebase configuration
@@ -20,30 +17,5 @@ export function init(){
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  db = firebase.firestore();
+  window.db = firebase.firestore();
 }
-
-function saveScore() {
-    // Get name from input box
-    let name = document.getElementById('name').value;
-
-    // Make sure name has a value, if not send alert.
-    if(name !== "") {
-        // Add a new document in collection "scores"
-        db.collection("scores").doc().set({
-            name: name,
-            score: score
-        })
-        .then(function() {
-            console.log("Document successfully written!");
-            updateScores();
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
-    } else {
-        alert('Please enter a name');
-    }
-}
-

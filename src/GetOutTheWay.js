@@ -1,10 +1,12 @@
 import * as IndexView from './index_view.js';
 import GameView from './game_view.js';
+import * as Scoreboard from './scoreboard.js'; 
 
 
 class GetOutTheWay{
 
   constructor(){
+    
     this.setup.bind(this)();
     this.handleWelcome.bind(this)();
   }
@@ -21,7 +23,13 @@ class GetOutTheWay{
     return this;
   }
   setupGame(){
-    this.gameView = new GameView(); 
+    IndexView.resetPoints();
+    if(!this.gameView){
+      this.gameView = new GameView();
+    }
+    else{
+      this.gameView.newGame();
+    }
     //show canvas
     IndexView.displayGame();
   }
@@ -36,6 +44,7 @@ class GetOutTheWay{
     IndexView.gameOver(this);
   }
   setup(){
+    Scoreboard.init();
     IndexView.createCanvas();
     window.ctx = GameView.findCtx();
     this.scoreBoard = []; //has a name and value property 
@@ -44,6 +53,7 @@ class GetOutTheWay{
   }
   handleSetup(){
     window.addEventListener('gameOver', ()=>{
+      IndexView.clearGameAlerts();
       this.score = window.score;
       this.gameOver.bind(this)();
     })

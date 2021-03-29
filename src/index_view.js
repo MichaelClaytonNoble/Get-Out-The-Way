@@ -1,5 +1,5 @@
 import GameView from './game_view.js';
-// import Scoreboard from './scoreboard.js';
+import * as Scoreboard from './scoreboard.js';
 
 let currentIndex = 0; 
 let musicList = [];
@@ -141,8 +141,7 @@ function typewriterFX(){
     autoplay: true,
     loop: false,
     preload: true,
-    volume: 0,
-    // volume: volume,
+    volume: volume,
     rate: 2
   });
 }
@@ -213,12 +212,70 @@ function handleScoreboardEvents(elements){
   });
 }
 
-export function loadScoreboard(){
 
+function loadScoreboard() {
+    // Clear current scores in our scoreboard
+    const table = document.getElementById('scoreboard-table');
+    
+    // Get the top 5 scores from our scoreboard
+    db.collection("scores").orderBy("score", "desc").limit(15).get().then((user) => {
+        user.forEach((doc) => {
+          const row = document.createElement('tr');
+          const unameData = document.createElement('td');
+          unameData.innerText = doc.data().username;
+          const scoreData = document.createElement('td');
+          scoreData.innerText = doc.data().score; 
+          row.append(unameData);
+          row.append(scoreData);
+          table.append(row); 
+        })
+    })
 }
 
-export function saveScore(){
+export function saveScore(GOTW){
 
+  const saveFormWrap = document.createElement('div');
+  saveFormWrap.id='saveForm-wrap';
+
+  const saveForm = document.createElement('div');
+  saveForm.id ='saveForm';
+  saveForm.innerText = 'Enter your username';
+
+  const usernameInput = document.createElement('input');
+  usernameInput.id ='saveForm-input';
+  usernameInput.type ='text'; 
+  usernameInput.setAttribute('maxlength', '7');
+  
+  document.getElementById('layer4').append(saveForm);
+  
+  const addButton = document.createElement('button');
+  addButton.classList.add('welcomeButtons');
+  addButton.innerText="add"; 
+  addButton.id ="add-button";
+  
+  saveFormWrap.append(usernameInput);
+  saveFormWrap.append(addButton);
+  saveForm.append(saveFormWrap);
+
+  addButton.addEventListener('click', ()=>{
+    const username = document.getElementById('saveForm-input').value;
+    if(username !== "") {
+        window.db.collection("scores").doc().set({
+            username: username,
+            score: window.score
+        })
+        .then(function() {
+          saveForm.remove();
+          displayScoreBoard(GOTW);
+            console.log("Score updated");
+        })
+        .catch(function(error) {
+            console.error("Error: ", error);
+        });
+    } else {
+        alert('Please enter a username');
+    }
+  });
 }
 
 export function playMusic(src){
@@ -243,8 +300,7 @@ export function playMusic(src){
       autoplay: true,
       loop: false,
       preload: true,
-      volume: 0,
-      // volume: volume,
+      volume: volume,
       onend: ()=>{if(src!=='OpeningTheme.mp3'){return cb()}}
     });
     currentSong = music; 
@@ -318,12 +374,19 @@ export function createCanvas(){
     }
   })();
 }
-
+export function clearGameAlerts(){
+  let gameAlerts = document.getElementById('side-menu-list')
+  gameAlerts.classList.add('hidden');
+  setTimeout(()=>gameAlerts.classList.remove('hidden'), 7000);
+}
 export function gameOver(GOTW){
   displayGame();
-  saveScore();
-  displayScoreBoard(GOTW);
-
+  saveScore(GOTW);
+}
+export function resetPoints(){
+  document.getElementById('stats-score-number').innerText = 0;
+  document.getElementById('stats-points').innerText = 100;
+  document.getElementById('stats-shields-number').innerText = 5;
 }
 export function flashInstructions(){
     const flashInstructions = document.getElementById("side-menu-flash-instructions")
