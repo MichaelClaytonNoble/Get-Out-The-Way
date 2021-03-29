@@ -1,0 +1,23 @@
+#scoreboard{
+  display: flex;
+  flex-direction: column;
+
+}
+
+#scoreboard-title{
+  color: white;
+  font-size: calc(2vw + 1vh);
+  text-align: center;
+  margin: 10px 0px 20px 0px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+#scoreboard-table{
+  align-self: center;
+  width: 80%;
+  border-bottom: 1px white solid;
+  color: white;
+  font-size: calc(1vw + .5vh);
+  overflow-y: scroll;
+}

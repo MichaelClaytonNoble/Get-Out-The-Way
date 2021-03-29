@@ -46,12 +46,6 @@ class GetOutTheWay{
   }
   handleSetup(){
 
-    const toggle = document.getElementById('toggle-music');
-    toggle.addEventListener('change', ()=>{
-
-    })
-
-    
   }
 
 }
