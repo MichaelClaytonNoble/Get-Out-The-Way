@@ -132,11 +132,13 @@ body{
   color: var(--title-text);
   font-family: 'Courier New', Courier, monospace;
 }
+
 #title-bar{
   font-size: calc(2vw + 1vh);
   font-weight: bolder; 
   text-align: center;
 }
+
 #title{
   text-align: center;
   width: 100%; 
@@ -220,8 +222,8 @@ body{
   left: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-content: center; 
+  /* justify-content: center;  */
+  /* align-content: center;  */
 }
 
 #game-canvas{

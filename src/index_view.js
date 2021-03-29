@@ -1,4 +1,6 @@
 import GameView from './game_view.js';
+// import Scoreboard from './scoreboard.js';
+
 let currentIndex = 0; 
 let musicList = [];
 let currentSong;
@@ -81,6 +83,8 @@ function handleWelcomeMenuEvents(elements){
     elements.GetOutTheWay.startGame();
   });
   elements.scoreBoardButton.addEventListener('click', ()=>{
+      const welcomeMenu = document.getElementById('welcomeMenu');
+  welcomeMenu.parentNode.removeChild(welcomeMenu);
     displayScoreBoard(elements.GetOutTheWay);
   });
 }
@@ -145,14 +149,30 @@ function typewriterFX(){
 
 export function displayScoreBoard(GetOutTheWay){
   const layer4 = document.getElementById('layer4');
-  const welcomeMenu = document.getElementById('welcomeMenu');
-  welcomeMenu.parentNode.removeChild(welcomeMenu);
+
   
   const scoreboard = document.createElement('div');
   scoreboard.id = 'scoreboard';
   scoreboard.className = 'scoreboard';
 
   const title = document.createElement('div');
+  title.innerText = "Scoreboard"; 
+  title.id='scoreboard-title';
+
+  const table = document.createElement('table');
+  table.id ="scoreboard-table";
+  
+  const tr = document.createElement('tr');
+  const thName = document.createElement('th');
+  thName.innerText = "name";
+
+  const thScore = document.createElement('th');
+  thScore.innerText = "score";
+
+  tr.append(thName);
+  tr.append(thScore);
+
+  table.append(tr);
 
   const scoreboardButtonWrap = document.createElement('div'); 
   scoreboardButtonWrap.classList.add('scoreboardButtonWrap');
@@ -170,10 +190,15 @@ export function displayScoreBoard(GetOutTheWay){
   
   scoreboardButtonWrap.append(startButton);
   scoreboardButtonWrap.append(backButton);
-  scoreboard.append(scoreboardButtonWrap)
+
+  scoreboard.append(title);
+  scoreboard.append(table);
+  scoreboard.append(scoreboardButtonWrap);
+
   layer4.append(scoreboard);
   const elements = {startButton, backButton, scoreboard, layer4,GetOutTheWay};
   handleScoreboardEvents(elements);
+  loadScoreboard();
 }
 
 function handleScoreboardEvents(elements){
@@ -184,8 +209,16 @@ function handleScoreboardEvents(elements){
   });
   elements.backButton.addEventListener('click', ()=>{
     layer4.removeChild(elements.scoreboard);
-    createWelcome();
+    createWelcome(elements.GetOutTheWay);
   });
+}
+
+export function loadScoreboard(){
+
+}
+
+export function saveScore(){
+
 }
 
 export function playMusic(src){
@@ -285,6 +318,13 @@ export function createCanvas(){
     }
   })();
 }
+
+export function gameOver(GOTW){
+  displayGame();
+  saveScore();
+  displayScoreBoard(GOTW);
+
+}
 export function flashInstructions(){
     const flashInstructions = document.getElementById("side-menu-flash-instructions")
     flashInstructions.classList.remove('hidden');
@@ -303,6 +343,9 @@ export function flashInstructions(){
       setTimeout(()=>flashInstructions.removeChild(message), 4500);
     }
     nextMessage();
-   setInterval(nextMessage, 4550)
-    
+   let id = setInterval(nextMessage, 4550);
+   window.addEventListener('gameOver', ()=>{
+     clearInterval(id); 
+     flashInstructions.classList.add('hidden');
+   })
   }

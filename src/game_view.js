@@ -15,17 +15,34 @@ class GameView {
     this.handleMovements = this.handleMovements.bind(this); 
     this.createEventsTimers = this.createEventsTimers.bind(this); 
     this.step = this.step.bind(this);
+    this.animateOn=true;
+    this.reset = this.reset.bind(this);
   }
 
 
 
   start(){
+    GameView.findCtx().save();
     this.handleMovements();
     this.bindKeyHandlers();
     this.createEventsTimers();
 
     // //start animation 
+    this.reset();
+  }
+
+  reset(){
+    this.game = new Game();
+    this.startAnimation();
+  }
+
+  startAnimation(){
     requestAnimationFrame(this.animate.bind(this));
+    window.addEventListener('gameOver', ()=> {
+      this.animateOn = false;
+      GameView.findCtx().restore();
+      GameView.gameOver();
+    })
   }
   
   //animation 
@@ -52,7 +69,7 @@ class GameView {
     }
     
     this.lastTime = time;
-    requestAnimationFrame(this.animate.bind(this));
+    if(this.animateOn){requestAnimationFrame(this.animate.bind(this));}
   }
   createEventsTimers(){
     this.lastTime = 0; 
@@ -204,10 +221,14 @@ class GameView {
     sFX.currentTime =0; 
   }
 
-
   //get canvas context
   static findCtx(){
     return document.getElementById("game-canvas").getContext('2d'); 
+  }
+
+  //game over
+  static gameOver(){
+
   }
 }
 

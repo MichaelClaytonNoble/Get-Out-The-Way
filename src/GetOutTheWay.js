@@ -5,9 +5,8 @@ import GameView from './game_view.js';
 class GetOutTheWay{
 
   constructor(){
-    this.setup();
-    this.handleWelcome();
-    this.handleWelcome = this.handleWelcome.bind(this); 
+    this.setup.bind(this)();
+    this.handleWelcome.bind(this)();
   }
 
   handleWelcome(){
@@ -17,9 +16,10 @@ class GetOutTheWay{
     IndexView.createWelcome(this); 
     IndexView.loadJukebox(); 
 
-    let play = document.getElementById('play');
   }
-  
+  get self(){
+    return this;
+  }
   setupGame(){
     this.gameView = new GameView(); 
     //show canvas
@@ -33,19 +33,20 @@ class GetOutTheWay{
     IndexView.flashInstructions();
   }
   gameOver(){
-
+    IndexView.gameOver(this);
   }
-  endGame(){
-    
-  }
-
   setup(){
     IndexView.createCanvas();
     window.ctx = GameView.findCtx();
     this.scoreBoard = []; //has a name and value property 
+    this.score;
+    this.handleSetup.bind(this)();
   }
   handleSetup(){
-
+    window.addEventListener('gameOver', ()=>{
+      this.score = window.score;
+      this.gameOver.bind(this)();
+    })
   }
 
 }

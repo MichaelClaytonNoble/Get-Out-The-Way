@@ -30,25 +30,15 @@ class Game {
     this.addShieldBox(); 
     this.addEnergyBox(); 
     this.addSlowBox();
-    // this.addAlien();
-    // this.addAlien();
-    // this.addAlien();
-    // this.addAlien();
-    // this.addAlien();
-    // this.addAlien();
-
-    // this.addShadow(); 
-    
-
+  
     //shields & points
-    this.score = 0;
+    this._score = 0;
     this.shields = 5;
     this.box_points;
     this.setPoints(); 
     
     //bindings
-    this.bindMethods = this.bindMethods.bind(this); 
-    this.bindMethods(this);
+    this.bindMethods.bind(this)(this);
   }
 
   //add objects to the game 
@@ -114,6 +104,14 @@ class Game {
   }
   
   //points & lives management 
+
+  get score(){
+    return this._score;
+  }
+
+  set score(val){
+    this._score = val;
+  }
   newLife(){
     this.ships.push(Game.createShip());
   }
@@ -130,13 +128,14 @@ class Game {
     GameView.updateStats('shields', this.shields); 
   }
   addPoint(){
-    this.score += this.box_points;
+    this._score += this.box_points;
     this.setPoints();
-    GameView.updateStats('total', this.score); 
+    GameView.updateStats('total', this._score); 
   }
 
   setPoints(){
     this.box_points = BOX_POINTS;
+    window.score = this._score;
   }
   reducePoints(){
     if(this.box_points !== 0){
@@ -394,7 +393,8 @@ class Game {
   }
 
   gameOver(){
-    
+    window.score = this.score;
+    window.dispatchEvent(new Event('gameOver'));
   }
 
   bindMethods(that){
