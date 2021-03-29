@@ -19,9 +19,10 @@ export function displayGame(){
   }
 }
 
-export function createWelcome(){
+export function createWelcome(GetOutTheWay){
   const welcomeMenu = document.createElement('div'); 
   welcomeMenu.classList.add('welcomeMenu');
+  welcomeMenu.id = 'welcomeMenu';
 
   const trident1 = document.createElement('img');
   trident1.src = "https://raw.githubusercontent.com/MichaelClaytonNoble/Get-Out-The-Way/main/dist/css/images/trident1.png";
@@ -52,11 +53,12 @@ export function createWelcome(){
   const scoreBoardButton = document.createElement('button');
   scoreBoardButton.classList.add('welcomeButtons');
   scoreBoardButton.innerText="Score Board"; 
+  scoreBoardButton.id ="scoreboard-button";
+  
+    welcomeButtonWrap.append(startButton);
+    welcomeButtonWrap.append(scoreBoardButton);
 
   instructionsWrap.append(instructions);
-
-  welcomeButtonWrap.append(startButton);
-  welcomeButtonWrap.append(scoreBoardButton);
 
   welcomeMenu.append(trident1); 
   welcomeMenu.append(instructionsWrap);
@@ -66,18 +68,21 @@ export function createWelcome(){
   layer4.append(welcomeMenu); 
 
   
-  const elements = {startButton, scoreBoardButton, welcomeMenu, layer4}
-  handleCreateWelcome(elements);
+  const elements = {startButton, scoreBoardButton, welcomeMenu, layer4, GetOutTheWay}
+  handleWelcomeMenuEvents(elements);
   typewriter('instructions', instructionsText);
 }
-function handleCreateWelcome(elements){
+
+
+function handleWelcomeMenuEvents(elements){
 
   elements.startButton.addEventListener('click', ()=> {
     layer4.removeChild(elements.welcomeMenu);
-  })
+    elements.GetOutTheWay.startGame();
+  });
   elements.scoreBoardButton.addEventListener('click', ()=>{
-    displayScoreBoard();
-  })
+    displayScoreBoard(elements.GetOutTheWay);
+  });
 }
 function typewriter(id, text){
   let element = document.getElementById(id);
@@ -85,6 +90,8 @@ function typewriter(id, text){
   let flag = false;
   let play = document.getElementById('play');
   play.addEventListener('click', ()=>{flag=true});
+  let scoreboardButton = document.getElementById('scoreboard-button');
+  scoreboardButton.addEventListener('click', ()=>{flag=true});
   texts[0] = (texts[0]+'//////////////////////').split('');
   texts[1] = (texts[1]+'//////////////////////').split('');
   texts[2] = (texts[2]+'//////////////////////').split('');
@@ -136,8 +143,49 @@ function typewriterFX(){
   });
 }
 
-export function displayScoreBoard(){
+export function displayScoreBoard(GetOutTheWay){
+  const layer4 = document.getElementById('layer4');
+  const welcomeMenu = document.getElementById('welcomeMenu');
+  welcomeMenu.parentNode.removeChild(welcomeMenu);
+  
+  const scoreboard = document.createElement('div');
+  scoreboard.id = 'scoreboard';
+  scoreboard.className = 'scoreboard';
 
+  const title = document.createElement('div');
+
+  const scoreboardButtonWrap = document.createElement('div'); 
+  scoreboardButtonWrap.classList.add('scoreboardButtonWrap');
+  scoreboardButtonWrap.classList.add('welcomeButtonWrap');
+  
+  const startButton = document.createElement('button');
+  startButton.classList.add('welcomeButtons'); 
+  startButton.id = "play";
+  startButton.innerText="Play"; 
+
+  const backButton = document.createElement('button');
+  backButton.classList.add('welcomeButtons');
+  backButton.innerText="back"; 
+  backButton.id ="back-button";
+  
+  scoreboardButtonWrap.append(startButton);
+  scoreboardButtonWrap.append(backButton);
+  scoreboard.append(scoreboardButtonWrap)
+  layer4.append(scoreboard);
+  const elements = {startButton, backButton, scoreboard, layer4,GetOutTheWay};
+  handleScoreboardEvents(elements);
+}
+
+function handleScoreboardEvents(elements){
+
+  elements.startButton.addEventListener('click', ()=> {
+    layer4.removeChild(elements.scoreboard);
+    elements.GetOutTheWay.startGame();
+  });
+  elements.backButton.addEventListener('click', ()=>{
+    layer4.removeChild(elements.scoreboard);
+    createWelcome();
+  });
 }
 
 export function playMusic(src){
@@ -196,8 +244,6 @@ export function loadJukebox(){
       }
      });
 }
-
-
 export function createCanvas(){
 
   let layer = document.getElementById("layer4");
@@ -239,7 +285,6 @@ export function createCanvas(){
     }
   })();
 }
-
 export function flashInstructions(){
     const flashInstructions = document.getElementById("side-menu-flash-instructions")
     flashInstructions.classList.remove('hidden');
