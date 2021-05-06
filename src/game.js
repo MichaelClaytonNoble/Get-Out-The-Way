@@ -220,7 +220,6 @@ class Game {
 
   action(object){
     this.remove(object.type);
-
     GameView.playSoundFX(object.type);
     switch(object.type){
       case 'alien':
@@ -257,13 +256,11 @@ class Game {
         }, SLOW_DURATION);
         break;
       case 'kill':
-
         break;
       default: break; 
     }
   }
   checkCollisions(){
-
     const allObjects = this.getAllObjects();
     for(let i=0; i<allObjects.length; i++){
       if(allObjects[i] !== undefined){
@@ -272,8 +269,7 @@ class Game {
             if(allObjects[i].isCollidedWith(kill)){
               allObjects[i].collisionDetected = true;
             }
-
-          })
+          });
         }
         if(allObjects[i].isCollidedWith(this.ships[0])){
           allObjects[i].collisionDetected = true;

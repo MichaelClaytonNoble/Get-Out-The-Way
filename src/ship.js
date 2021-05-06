@@ -87,7 +87,7 @@ class Ship extends MovingObject{
     if(vx<0 && vy>0){
       cRadians = radians['downleft'];
     }
-///start oeue
+
     let start = [this.pos[0]-this.radius/5, this.pos[1]-this.radius/7];
     let strokea=[this.pos[0]-this.radius, this.pos[1]];
     let strokeb=[this.pos[0]-this.radius/4.8, this.pos[1]+this.radius/5];

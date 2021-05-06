@@ -80,7 +80,6 @@ class Alien extends MovingObject{
     if(vx<=0 && vy>0){
       cRadians = radians['downleft'];
     }
-
     let start = [this.pos[0]-this.radius, this.pos[1]];
     let stroke1 = [this.pos[0]+this.radius, this.pos[1]];
     let stroke2 = [this.pos[0], this.pos[1]-this.radius/2];
