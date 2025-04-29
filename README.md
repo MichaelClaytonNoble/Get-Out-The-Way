@@ -1,4 +1,4 @@
-# [Get Out The Way!!](https://michaelclaytonnoble.github.io/Get-Out-The-Way/)
+# [Get Out The Way!!](https://michaelclaytonnoble.github.io/Get-Out-The-Way/) [Play Here](https://michaelclaytonnoble.github.io/Get-Out-The-Way/) 
 Move your ship out of the way and collect the energy boxes before your ship runs out of power. Collect shields to protect you from the alien invaders on your way back to your home world.
 
 ## Technologies
